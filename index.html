@@ -3,839 +3,330 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Halil İbrahim Yılmaz — Game Developer</title>
+<title>Halil İbrahim Yılmaz — Gameplay Programmer</title>
+<meta name="description" content="Gameplay programmer focused on Unreal Engine and C++. Worked on SpaceBourne 2 — gameplay systems, multiplayer networking and performance-sensitive game code.">
+<meta property="og:title" content="Halil İbrahim Yılmaz — Gameplay Programmer">
+<meta property="og:description" content="Gameplay programmer focused on Unreal Engine and C++. Worked on SpaceBourne 2.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1646850/280f8cb615d6b02c93f31e5fdd9c8b34b7b03348/ss_280f8cb615d6b02c93f31e5fdd9c8b34b7b03348.1920x1080.jpg?t=1763489632">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0a0a0f; --surface: #111118; --card: #16161f; --border: #2a2a3a;
-    --accent: #c8ff00; --text: #e8e8f0; --muted: #666680;
-    --font-display: 'Syne', sans-serif; --font-mono: 'Space Mono', monospace;
-  }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font-family: var(--font-mono); line-height: 1.6; overflow-x: hidden; }
-  body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:0.4;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); }
-
-  /* ── NAV ── */
-  nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 3rem; background:rgba(10,10,15,0.88); backdrop-filter:blur(14px); border-bottom:1px solid var(--border); gap:1rem; }
-  .nav-logo { font-family:var(--font-display); font-weight:800; font-size:1.1rem; color:var(--accent); letter-spacing:-0.02em; flex-shrink:0; }
-  .nav-center { display:flex; gap:2.5rem; list-style:none; }
-  .nav-center a { color:var(--muted); text-decoration:none; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; transition:color 0.2s; }
-  .nav-center a:hover { color:var(--accent); }
-
-  /* ── LANG DROPDOWN ── */
-  .lang-dropdown { position:relative; }
-  .lang-trigger { display:flex; align-items:center; gap:0.5rem; background:var(--card); border:1px solid var(--border); color:var(--text); font-family:var(--font-mono); font-size:0.75rem; padding:0.4rem 0.8rem; border-radius:4px; cursor:pointer; transition:all 0.2s; }
-  .lang-trigger:hover, .lang-dropdown.open .lang-trigger { border-color:var(--accent); color:var(--accent); }
-  .lang-arrow { font-size:0.55rem; transition:transform 0.2s; display:inline-block; }
-  .lang-dropdown.open .lang-arrow { transform:rotate(180deg); }
-  .lang-menu { position:absolute; top:calc(100% + 6px); right:0; background:var(--card); border:1px solid var(--border); border-radius:4px; overflow:hidden; min-width:150px; z-index:200; opacity:0; transform:translateY(-6px); pointer-events:none; transition:opacity 0.2s, transform 0.2s; }
-  .lang-dropdown.open .lang-menu { opacity:1; transform:translateY(0); pointer-events:all; }
-  .lang-option { display:flex; align-items:center; gap:0.6rem; padding:0.6rem 1rem; font-family:var(--font-mono); font-size:0.75rem; color:var(--muted); cursor:pointer; transition:all 0.15s; border:none; background:none; width:100%; text-align:left; }
-  .lang-option:hover { background:rgba(200,255,0,0.06); color:var(--text); }
-  .lang-option.active { color:var(--accent); }
-  .lang-flag { font-size:1rem; }
-  .lang-check { margin-left:auto; color:var(--accent); font-size:0.7rem; }
-
-  /* ── HERO ── */
-  .hero { min-height:100vh; display:flex; align-items:center; padding:8rem 3rem 4rem; position:relative; overflow:hidden; }
-  .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(200,255,0,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(200,255,0,0.03) 1px,transparent 1px); background-size:60px 60px; }
-  .hero-glow { position:absolute; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,rgba(200,255,0,0.06) 0%,transparent 70%); top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; }
-  .hero-content { position:relative; max-width:900px; }
-  .hero-eyebrow { font-size:0.75rem; color:var(--accent); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:1.5rem; display:flex; align-items:center; gap:0.75rem; animation:fadeUp 0.8s ease both; }
-  .hero-eyebrow::before { content:''; width:32px; height:1px; background:var(--accent); }
-  .hero-name { font-family:var(--font-display); font-size:clamp(3.5rem,8vw,7rem); font-weight:800; line-height:0.95; letter-spacing:-0.03em; margin-bottom:1rem; animation:fadeUp 0.8s 0.1s ease both; }
-  .hero-name .accent { color:var(--accent); }
-  .hero-title { font-family:var(--font-display); font-size:clamp(1.5rem,3vw,2.5rem); font-weight:600; color:var(--muted); margin-bottom:2rem; animation:fadeUp 0.8s 0.2s ease both; }
-  .hero-desc { max-width:560px; font-size:0.9rem; color:var(--muted); line-height:1.8; margin-bottom:3rem; animation:fadeUp 0.8s 0.3s ease both; }
-  .hero-cta { display:flex; gap:1rem; flex-wrap:wrap; animation:fadeUp 0.8s 0.4s ease both; }
-  .btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.85rem 2rem; font-family:var(--font-mono); font-size:0.8rem; letter-spacing:0.08em; text-decoration:none; border-radius:2px; transition:all 0.2s; cursor:pointer; border:none; }
-  .btn-primary { background:var(--accent); color:#0a0a0f; font-weight:700; }
-  .btn-primary:hover { background:#d4ff1a; transform:translateY(-2px); box-shadow:0 8px 24px rgba(200,255,0,0.25); }
-  .btn-outline { background:transparent; color:var(--text); border:1px solid var(--border); }
-  .btn-outline:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
-  .hero-badges { position:absolute; right:3rem; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:1rem; animation:fadeUp 0.8s 0.5s ease both; }
-  .badge-item { background:var(--card); border:1px solid var(--border); border-radius:4px; padding:1rem 1.5rem; text-align:center; min-width:120px; }
-  .badge-num { font-family:var(--font-display); font-size:2rem; font-weight:800; color:var(--accent); line-height:1; }
-  .badge-label { font-size:0.65rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-top:0.25rem; }
-
-  /* ── SECTIONS ── */
-  section { padding:6rem 3rem; max-width:1200px; margin:0 auto; }
-  .section-label { font-size:0.7rem; color:var(--accent); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:1rem; display:flex; align-items:center; gap:0.75rem; }
-  .section-label::before { content:''; width:24px; height:1px; background:var(--accent); }
-  .section-title { font-family:var(--font-display); font-size:clamp(2rem,4vw,3.5rem); font-weight:800; letter-spacing:-0.02em; line-height:1.05; margin-bottom:1rem; }
-  .section-sub { color:var(--muted); font-size:0.85rem; max-width:500px; line-height:1.8; margin-bottom:3rem; }
-
-  /* ── SKILLS ── */
-  .skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.5px; background:var(--border); border:1.5px solid var(--border); }
-  .skill-card { background:var(--card); padding:2rem; transition:background 0.2s; }
-  .skill-card:hover { background:#1a1a25; }
-  .skill-icon { font-size:1.8rem; margin-bottom:1rem; }
-  .skill-name { font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; }
-  .skill-desc { font-size:0.78rem; color:var(--muted); line-height:1.7; }
-  .skill-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:1rem; }
-  .tag { font-size:0.65rem; letter-spacing:0.08em; padding:0.2rem 0.6rem; border-radius:2px; background:rgba(200,255,0,0.08); color:var(--accent); border:1px solid rgba(200,255,0,0.2); }
-
-  /* ── PROJECTS ── */
-  .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1.5rem; }
-  .project-card { background:var(--card); border:1px solid var(--border); border-radius:4px; padding:2rem; position:relative; overflow:hidden; transition:all 0.3s; text-decoration:none; color:inherit; display:block; }
-  .project-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform 0.3s; }
-  .project-card:hover { border-color:rgba(200,255,0,0.3); transform:translateY(-4px); box-shadow:0 16px 48px rgba(0,0,0,0.4); }
-  .project-card:hover::before { transform:scaleX(1); }
-  .project-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem; }
-  .project-type { font-size:0.65rem; letter-spacing:0.15em; color:var(--muted); text-transform:uppercase; }
-  .project-lang { font-size:0.7rem; color:var(--accent); display:flex; align-items:center; gap:0.4rem; }
-  .project-lang::before { content:''; width:8px; height:8px; border-radius:50%; background:var(--accent); }
-  .project-name { font-family:var(--font-display); font-size:1.3rem; font-weight:700; margin-bottom:0.75rem; line-height:1.2; }
-  .project-desc { font-size:0.8rem; color:var(--muted); line-height:1.7; margin-bottom:1.5rem; }
-  .project-arrow { font-size:0.75rem; color:var(--accent); }
-
-  /* ── GAME CARDS ── */
-  .games-section { padding:6rem 3rem; max-width:1200px; margin:0 auto; }
-  .game-card { position:relative; border-radius:8px; overflow:hidden; border:1px solid var(--border); transition:all 0.4s; text-decoration:none; color:inherit; display:block; }
-  .game-card:hover { border-color:rgba(200,255,0,0.4); transform:translateY(-6px); box-shadow:0 24px 64px rgba(0,0,0,0.6); }
-  .game-card-img-wrap { overflow:hidden; position:relative; }
-  .game-card-img-wrap::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(10,10,15,0.95) 0%,rgba(10,10,15,0.3) 50%,transparent 100%); }
-  .game-card-img { width:100%; aspect-ratio:16/7; object-fit:cover; display:block; filter:brightness(0.75); transition:filter 0.4s, transform 0.4s; }
-  .game-card:hover .game-card-img { filter:brightness(0.9); transform:scale(1.02); }
-  .game-card-body { padding:2rem 2.5rem; background:var(--card); }
-  .game-card-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; }
-  .game-card-title { font-family:var(--font-display); font-size:1.6rem; font-weight:800; letter-spacing:-0.02em; line-height:1.1; }
-  .game-card-meta { display:flex; flex-direction:column; align-items:flex-end; gap:0.4rem; }
-  .game-released-badge { font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; padding:0.3rem 0.8rem; border-radius:2px; background:rgba(200,255,0,0.12); color:var(--accent); border:1px solid rgba(200,255,0,0.3); white-space:nowrap; }
-  .game-soon-badge { font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.3rem 0.8rem; border-radius:2px; white-space:nowrap; display:flex; align-items:center; gap:0.4rem; }
-  .game-card-desc { font-size:0.82rem; color:var(--muted); line-height:1.75; margin-bottom:1.5rem; max-width:700px; }
-  .game-card-footer { display:flex; justify-content:space-between; align-items:center; }
-  .game-card-tags { display:flex; flex-wrap:wrap; gap:0.4rem; }
-  .game-card-cta { font-size:0.78rem; font-family:var(--font-mono); white-space:nowrap; margin-left:1rem; }
-  .game-review-score { font-size:0.75rem; color:var(--muted); }
-  .game-review-score span { color:#66c0f4; }
-  .games-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:1.5rem; }
-
-  /* ── ABOUT ── */
-  .about-layout { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
-  .about-text p { font-size:0.85rem; color:var(--muted); line-height:1.9; margin-bottom:1.2rem; }
-  .about-text p strong { color:var(--text); }
-  .timeline { display:flex; flex-direction:column; }
-  .timeline-item { display:flex; gap:1.5rem; padding:1.5rem 0; border-bottom:1px solid var(--border); }
-  .timeline-item:last-child { border-bottom:none; }
-  .timeline-dot { width:10px; height:10px; border-radius:50%; background:var(--accent); margin-top:0.35rem; flex-shrink:0; box-shadow:0 0 12px rgba(200,255,0,0.4); }
-  .timeline-year { font-size:0.7rem; color:var(--accent); letter-spacing:0.1em; margin-bottom:0.25rem; }
-  .timeline-role { font-family:var(--font-display); font-size:1rem; font-weight:700; margin-bottom:0.25rem; }
-  .timeline-place { font-size:0.78rem; color:var(--muted); }
-
-  /* ── CONTACT ── */
-  .contact-wrap { background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:6rem 3rem; }
-  .contact-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
-  .contact-links { display:flex; flex-direction:column; gap:1rem; margin-top:2rem; }
-  .contact-link { display:flex; align-items:center; gap:1rem; padding:1.2rem 1.5rem; background:var(--card); border:1px solid var(--border); border-radius:4px; text-decoration:none; color:var(--text); font-size:0.85rem; transition:all 0.2s; }
-  .contact-link:hover { border-color:var(--accent); color:var(--accent); transform:translateX(4px); }
-  .contact-link-icon { font-size:1.2rem; width:24px; text-align:center; }
-  .contact-link-value { margin-left:auto; color:var(--muted); font-size:0.75rem; }
-  .status-badge { display:inline-flex; align-items:center; gap:0.5rem; padding:0.5rem 1rem; background:rgba(200,255,0,0.08); border:1px solid rgba(200,255,0,0.25); border-radius:100px; font-size:0.75rem; color:var(--accent); margin-bottom:2rem; }
-  .status-dot { width:6px; height:6px; border-radius:50%; background:var(--accent); animation:pulse 2s ease infinite; }
-
-  footer { padding:2rem 3rem; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border); }
-  footer p { font-size:0.75rem; color:var(--muted); }
-  .divider { width:100%; height:1px; background:var(--border); }
-
-  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-  .reveal { opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity:1; transform:translateY(0); }
-
-  @media(max-width:1000px){ .hero-badges{display:none} }
-  @media(max-width:900px){
-    nav{padding:1rem 1.5rem} .nav-center{gap:1.2rem}
-    section{padding:4rem 1.5rem} .hero{padding:7rem 1.5rem 4rem}
-    .about-layout,.contact-inner{grid-template-columns:1fr;gap:3rem}
-    .contact-wrap{padding:4rem 1.5rem}
-    footer{flex-direction:column;gap:0.5rem;text-align:center;padding:1.5rem}
-    .projects-grid{grid-template-columns:1fr} .games-grid-2{grid-template-columns:1fr}
-    .games-section{padding:4rem 1.5rem}
-  }
-  @media(max-width:600px){ .nav-center{display:none} .hero-name{font-size:3rem} }
-</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo">HIY.</div>
-  <ul class="nav-center">
-    <li><a href="#skills"   data-i18n="nav_skills">Skills</a></li>
-    <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
-    <li><a href="#games"    data-i18n="nav_games">Games</a></li>
-    <li><a href="#about"    data-i18n="nav_about">About</a></li>
-    <li><a href="#contact"  data-i18n="nav_contact">Contact</a></li>
-  </ul>
-  <div class="lang-dropdown" id="langDrop">
-    <button class="lang-trigger" onclick="toggleLang(event)">
-      <span id="curFlag">🇬🇧</span>
-      <span id="curCode">EN</span>
-      <span class="lang-arrow">▾</span>
-    </button>
-    <div class="lang-menu" id="langMenu">
-      <button class="lang-option active" onclick="setLang('en')"><span class="lang-flag">🇬🇧</span><span>English</span>   <span class="lang-check" id="chk-en">✓</span></button>
-      <button class="lang-option"        onclick="setLang('tr')"><span class="lang-flag">🇹🇷</span><span>Türkçe</span>    <span class="lang-check" id="chk-tr"></span></button>
-      <button class="lang-option"        onclick="setLang('de')"><span class="lang-flag">🇩🇪</span><span>Deutsch</span>   <span class="lang-check" id="chk-de"></span></button>
-      <button class="lang-option"        onclick="setLang('fr')"><span class="lang-flag">🇫🇷</span><span>Français</span>  <span class="lang-check" id="chk-fr"></span></button>
-      <button class="lang-option"        onclick="setLang('es')"><span class="lang-flag">🇪🇸</span><span>Español</span>   <span class="lang-check" id="chk-es"></span></button>
-      <button class="lang-option"        onclick="setLang('zh')"><span class="lang-flag">🇨🇳</span><span>中文</span>      <span class="lang-check" id="chk-zh"></span></button>
-      <button class="lang-option"        onclick="setLang('ja')"><span class="lang-flag">🇯🇵</span><span>日本語</span>    <span class="lang-check" id="chk-ja"></span></button>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top"><span class="brand-full">Halil İbrahim Yılmaz</span><span class="brand-short">HIY.</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="#work" data-i18n="nav_work">Work</a>
+      <a href="#projects" class="hide-sm" data-i18n="nav_projects">Case Studies</a>
+      <a href="#experience" class="hide-xs" data-i18n="nav_experience">Experience</a>
+      <a href="#about" class="hide-sm" data-i18n="nav_about">About</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+    </nav>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" data-lang="en" class="active">EN</button>
+      <span aria-hidden="true">/</span>
+      <button type="button" data-lang="tr">TR</button>
     </div>
   </div>
-</nav>
+</header>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-grid"></div><div class="hero-glow"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow" data-i18n="hero_eyebrow">Available for opportunities</div>
-    <h1 class="hero-name">Halil İbrahim<br><span class="accent">Yılmaz</span></h1>
-    <div class="hero-title" data-i18n="hero_title">Game Developer</div>
-    <p class="hero-desc" data-i18n="hero_desc">Unreal Engine 5 specialist focused on gameplay systems, multiplayer architecture, and game mechanics. Passionate about building complex and scalable game systems from the ground up — with C++ and a love for the craft.</p>
-    <div class="hero-cta">
-      <a href="#projects" class="btn btn-primary" data-i18n="cta_projects">View Projects →</a>
-      <a href="https://github.com/yilmazhalilibr" target="_blank" class="btn btn-outline">GitHub ↗</a>
+<main id="top">
+
+  <!-- ── HERO ─────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <h1>Halil İbrahim Yılmaz</h1>
+        <p class="hero-role mono" data-i18n="hero_role">Gameplay / Systems Programmer</p>
+        <p class="hero-tech mono" data-i18n="hero_tech">Unreal Engine · C++ · Multiplayer</p>
+        <p class="hero-bio" data-i18n="hero_bio">Worked on <strong>SpaceBourne 2</strong>. I build gameplay systems, multiplayer architecture and performance-sensitive game code.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#work" data-i18n="cta_work">View Work</a>
+          <a class="btn" href="https://github.com/yilmazhalilibr" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="Halil_Ibrahim_YILMAZ_CV.pdf" download data-i18n="cta_resume">Resume</a>
+        </div>
+      </div>
+      <figure class="hero-media">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1646850/280f8cb615d6b02c93f31e5fdd9c8b34b7b03348/ss_280f8cb615d6b02c93f31e5fdd9c8b34b7b03348.1920x1080.jpg?t=1763489632"
+             width="1920" height="1080" fetchpriority="high" decoding="async"
+             alt="SpaceBourne 2 — a capital ship in orbit above a planet (in-game screenshot)">
+        <figcaption class="mono">SpaceBourne 2 · Steam</figcaption>
+      </figure>
     </div>
-  </div>
-  <div class="hero-badges">
-    <div class="badge-item"><div class="badge-num">74+</div><div class="badge-label" data-i18n="badge_repos">Repos</div></div>
-    <div class="badge-item"><div class="badge-num">UE5</div><div class="badge-label" data-i18n="badge_engine">Primary Engine</div></div>
-    <div class="badge-item"><div class="badge-num">C++</div><div class="badge-label" data-i18n="badge_lang">Primary Lang</div></div>
-  </div>
-</div>
-<div class="divider"></div>
+  </section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-label reveal" data-i18n="skills_label">Expertise</div>
-  <h2 class="section-title reveal" data-i18n="skills_title">What I Build</h2>
-  <p class="section-sub reveal" data-i18n="skills_sub">Deep focus on Unreal Engine systems, multiplayer architecture, and gameplay mechanics.</p>
-  <div class="skills-grid">
-    <div class="skill-card reveal"><div class="skill-icon">🎮</div><div class="skill-name" data-i18n="sk1_name">Unreal Engine 5</div><div class="skill-desc" data-i18n="sk1_desc">Advanced UE5 development including GAS, custom game modes, level design tooling, and performance optimization.</div><div class="skill-tags"><span class="tag">GAS</span><span class="tag">Blueprints</span><span class="tag">C++</span><span class="tag">UE5.6</span></div></div>
-    <div class="skill-card reveal"><div class="skill-icon">🌐</div><div class="skill-name" data-i18n="sk2_name">Multiplayer Systems</div><div class="skill-desc" data-i18n="sk2_desc">Networked gameplay with AWS integration. Replication, dedicated server setup, matchmaking, and authoritative server-client architecture.</div><div class="skill-tags"><span class="tag">AWS</span><span class="tag">Replication</span><span class="tag">Dedicated Server</span></div></div>
-    <div class="skill-card reveal"><div class="skill-icon">⚙️</div><div class="skill-name" data-i18n="sk3_name">Gameplay Architecture</div><div class="skill-desc" data-i18n="sk3_desc">Inventory systems, building mechanics, combat systems, action-roguelike loops, and manufacturing simulation — built cleanly and extensibly.</div><div class="skill-tags"><span class="tag">Inventory</span><span class="tag">Combat</span><span class="tag">Crafting</span></div></div>
-    <div class="skill-card reveal"><div class="skill-icon">🧩</div><div class="skill-name" data-i18n="sk4_name">Design Patterns</div><div class="skill-desc" data-i18n="sk4_desc">Software design patterns in game development contexts. Clean architecture, SOLID principles, and scalable code design with C# and C++.</div><div class="skill-tags"><span class="tag">C#</span><span class="tag">SOLID</span><span class="tag">OOP</span></div></div>
-    <div class="skill-card reveal"><div class="skill-icon">🏗️</div><div class="skill-name" data-i18n="sk5_name">Game Systems</div><div class="skill-desc" data-i18n="sk5_desc">End-to-end system design: from high-level game feel to low-level implementation. Fortnite-style building, MOBA mechanics, and roguelike systems.</div><div class="skill-tags"><span class="tag">MOBA</span><span class="tag">Roguelike</span><span class="tag">Building</span></div></div>
-    <div class="skill-card reveal"><div class="skill-icon">☁️</div><div class="skill-name" data-i18n="sk6_name">Cloud & Backend</div><div class="skill-desc" data-i18n="sk6_desc">Amazon Web Services integration for multiplayer game infrastructure. Scalable backend design for online game features.</div><div class="skill-tags"><span class="tag">AWS</span><span class="tag">Backend</span><span class="tag">Cloud</span></div></div>
-  </div>
-</section>
+  <!-- ── SELECTED WORK ────────────────────────────────────────────────── -->
+  <section id="work" class="section">
+    <div class="container">
+      <h2 class="section-label mono" data-i18n="sec_work">Selected Work</h2>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-label reveal" data-i18n="proj_label">Work</div>
-  <h2 class="section-title reveal" data-i18n="proj_title">Featured Projects</h2>
-  <p class="section-sub reveal" data-i18n="proj_sub">A selection of game systems and mechanics built with Unreal Engine 5 and C++.</p>
-  <div class="projects-grid">
-    <a href="https://github.com/yilmazhalilibr/Crunch" target="_blank" class="project-card reveal">
-      <div class="project-top"><span class="project-type" data-i18n="p1_type">Multiplayer MOBA</span><span class="project-lang">C++</span></div>
-      <div class="project-name">Crunch</div>
-      <div class="project-desc" data-i18n="p1_desc">A MOBA on UE5.6 combining GAS with AWS-backed multiplayer infrastructure. Designed for scalable online play.</div>
-      <div class="project-arrow" data-i18n="view_gh">View on GitHub →</div>
-    </a>
-    <a href="https://github.com/yilmazhalilibr/Unreal_ActionRoguelike" target="_blank" class="project-card reveal">
-      <div class="project-top"><span class="project-type" data-i18n="p2_type">Action Roguelike</span><span class="project-lang">C++</span></div>
-      <div class="project-name">Action Roguelike</div>
-      <div class="project-desc" data-i18n="p2_desc">Dynamic combat mechanics, procedural challenge loops, and ability-based progression systems in Unreal Engine.</div>
-      <div class="project-arrow" data-i18n="view_gh">View on GitHub →</div>
-    </a>
-    <a href="https://github.com/yilmazhalilibr/Unreal_Building" target="_blank" class="project-card reveal">
-      <div class="project-top"><span class="project-type" data-i18n="p3_type">Building System</span><span class="project-lang">C++</span></div>
-      <div class="project-name" data-i18n="p3_name">Fortnite-Style Builder</div>
-      <div class="project-desc" data-i18n="p3_desc">Piece-by-piece placement, editing, and real-time destruction inspired by Fortnite's construction mechanics.</div>
-      <div class="project-arrow" data-i18n="view_gh">View on GitHub →</div>
-    </a>
-    <a href="https://github.com/yilmazhalilibr/Unreal_ManufactureRepo" target="_blank" class="project-card reveal">
-      <div class="project-top"><span class="project-type" data-i18n="p4_type">Simulation</span><span class="project-lang">C++</span></div>
-      <div class="project-name" data-i18n="p4_name">Manufacturing System</div>
-      <div class="project-desc" data-i18n="p4_desc">Resource gathering, processing pipelines, and factory automation mechanics in a production simulation game system.</div>
-      <div class="project-arrow" data-i18n="view_gh">View on GitHub →</div>
-    </a>
-    <a href="https://github.com/yilmazhalilibr/Unreal_Inventory" target="_blank" class="project-card reveal">
-      <div class="project-top"><span class="project-type" data-i18n="p5_type">Core System</span><span class="project-lang">C++</span></div>
-      <div class="project-name" data-i18n="p5_name">Inventory System</div>
-      <div class="project-desc" data-i18n="p5_desc">Modular inventory for Unreal Engine. Supports stacking, equipping, dropping, and UI integration. Easily extended and reused.</div>
-      <div class="project-arrow" data-i18n="view_gh">View on GitHub →</div>
-    </a>
-    <a href="https://github.com/yilmazhalilibr/DesignPatterns" target="_blank" class="project-card reveal">
-      <div class="project-top"><span class="project-type" data-i18n="p6_type">Engineering</span><span class="project-lang">C#</span></div>
-      <div class="project-name" data-i18n="p6_name">Design Patterns</div>
-      <div class="project-desc" data-i18n="p6_desc">Clean C# implementation of creational, structural, and behavioral patterns with game-relevant examples.</div>
-      <div class="project-arrow" data-i18n="view_gh">View on GitHub →</div>
-    </a>
-  </div>
-</section>
+      <article class="featured">
+        <figure class="featured-media">
+          <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1646850/698686ceae7e4c4a62ace86067d8357656cdf722/ss_698686ceae7e4c4a62ace86067d8357656cdf722.1920x1080.jpg?t=1763489632"
+               width="1920" height="1080" loading="lazy" decoding="async"
+               alt="SpaceBourne 2 — in-game scene with a mech and soldiers">
+        </figure>
+        <div class="featured-body">
+          <div class="featured-info">
+            <h3>SpaceBourne 2</h3>
+            <p class="featured-meta mono" data-i18n="sb2_meta">Gameplay / Systems Programming · DBK Games · 2023–2025</p>
+            <dl class="facts">
+              <div><dt class="mono" data-i18n="sb2_engine_l">Engine</dt><dd class="mono">Unreal Engine 5</dd></div>
+              <div><dt class="mono" data-i18n="sb2_released_l">Released</dt><dd class="mono" data-i18n="sb2_released_v">Nov 2025 · Steam</dd></div>
+            </dl>
+            <a class="link-arrow" href="https://store.steampowered.com/app/1646850/SpaceBourne_2/" target="_blank" rel="noopener" data-i18n="sb2_link">View on Steam</a>
+          </div>
+          <div class="contrib">
+            <h4 class="mono" data-i18n="sb2_contrib_head">My contribution</h4>
+            <ul>
+              <li data-i18n="sb2_c1">Built gameplay systems for SpaceBourne 2 (Steam, Mostly Positive)</li>
+              <li data-i18n="sb2_c2">Developed core mechanics: combat, inventory, UI and multiplayer networking</li>
+              <li data-i18n="sb2_c3">Active contributor to SpaceBourne 3 (in development)</li>
+            </ul>
+          </div>
+        </div>
+      </article>
 
-<!-- GAMES -->
-<div style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);" id="games">
-  <div class="games-section">
-    <div class="section-label reveal" data-i18n="games_label">Commercial Work</div>
-    <h2 class="section-title reveal" data-i18n="games_title">Games on Steam</h2>
-    <p class="section-sub reveal" data-i18n="games_sub">Published titles and upcoming releases I've contributed to.</p>
+      <h3 class="subhead mono" data-i18n="also_head">Also on Steam</h3>
+      <ul class="title-list">
+        <li>
+          <a href="https://store.steampowered.com/app/4973030/Illegal_Mechanic_Simulator/" target="_blank" rel="noopener">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4973030/8934e89377566cc130dd0373a39d4a4f5fb45e88/header.jpg?t=1785529295"
+                 width="460" height="215" loading="lazy" decoding="async" alt="Illegal Mechanic Simulator cover art">
+            <span>
+              <span class="tl-name">Illegal Mechanic Simulator</span>
+              <span class="tl-meta" data-i18n="ims_meta">Velovis Games Studio · In development · Co-op repair-shop sim</span>
+            </span>
+            <span class="tl-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://store.steampowered.com/app/1289320/MvsM/" target="_blank" rel="noopener">
+            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1289320/header.jpg?t=1759434138"
+                 width="460" height="215" loading="lazy" decoding="async" alt="MvsM cover art">
+            <span>
+              <span class="tl-name">MvsM</span>
+              <span class="tl-meta" data-i18n="mvsm_meta">Mania Interactive · In development · Cartoon co-op PvE for 1–8 players</span>
+            </span>
+            <span class="tl-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://store.steampowered.com/app/3314740/Terminal_Toilet_Simulator/" target="_blank" rel="noopener">
+            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3314740/fca627860815ad95f1a17a75e7100dea9e26b405/header.jpg?t=1760650003"
+                 width="460" height="215" loading="lazy" decoding="async" alt="Terminal Toilet Simulator cover art">
+            <span>
+              <span class="tl-name">Terminal Toilet Simulator</span>
+              <span class="tl-meta" data-i18n="tts_meta">Mania Interactive · In development · Absurdist restroom management sim</span>
+            </span>
+            <span class="tl-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-    <a href="https://store.steampowered.com/app/1646850/SpaceBourne_2/" target="_blank" class="game-card reveal">
-      <div class="game-card-img-wrap"><img class="game-card-img" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1646850/d4b37384632f4473eb824f7f6ce705f512fe3562/page_bg_raw.jpg?t=1763489632" alt="SpaceBourne 2" onerror="this.src='https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1646850/95fe45cbcd7ba1cf3cec36e676063d93c584913f/header.jpg?t=1763489632'"/></div>
-      <div class="game-card-body">
-        <div class="game-card-header">
+  <!-- ── TECHNICAL CASE STUDIES ───────────────────────────────────────── -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-label mono" data-i18n="sec_cases">Technical Case Studies</h2>
+      <p class="cases-intro" data-i18n="cases_intro">A few systems I've built — mostly gameplay, networking and tooling in Unreal Engine.</p>
+
+      <!-- TODO(screenshot): add a Crunch gameplay GIF or screenshot here (e.g. assets/crunch.png) -->
+      <article class="case">
+        <div class="case-head">
+          <h3>Crunch</h3>
+          <p class="case-cat mono" data-i18n="case_cat_1">Multiplayer MOBA prototype</p>
+        </div>
+        <div class="case-body">
+          <p class="case-desc" data-i18n="case_d1">Multiplayer MOBA prototype on Unreal Engine 5.6. GAS-based abilities, in-game shop and inventory systems, and a dedicated-server backend running on AWS.</p>
+          <p class="case-tech mono">Unreal Engine 5.6 · C++ · GAS · Replication · Dedicated Server · AWS</p>
+          <a class="link-arrow" href="https://github.com/yilmazhalilibr/Crunch" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <!-- TODO(screenshot): add an Action Roguelike gameplay GIF or screenshot here -->
+      <article class="case">
+        <div class="case-head">
+          <h3>Action Roguelike</h3>
+          <p class="case-cat mono" data-i18n="case_cat_2">Action roguelike prototype</p>
+        </div>
+        <div class="case-body">
+          <p class="case-desc" data-i18n="case_d2">Third-person action roguelike: ability-based combat, procedural challenge loops and a data-driven progression system.</p>
+          <p class="case-tech mono">Unreal Engine 5 · C++ · GAS · AI</p>
+          <a class="link-arrow" href="https://github.com/yilmazhalilibr/Unreal_ActionRoguelike" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <!-- TODO(screenshot): add a Fortnite-Style Builder GIF or screenshot here -->
+      <article class="case">
+        <div class="case-head">
+          <h3>Fortnite-Style Builder</h3>
+          <p class="case-cat mono" data-i18n="case_cat_3">Building system</p>
+        </div>
+        <div class="case-body">
+          <p class="case-desc" data-i18n="case_d3">Piece-by-piece building system with placement, editing and real-time destruction, inspired by Fortnite's construction mechanics.</p>
+          <p class="case-tech mono">Unreal Engine 5 · C++</p>
+          <a class="link-arrow" href="https://github.com/yilmazhalilibr/Unreal_Building" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <!-- TODO(screenshot): add an Inventory System screenshot here -->
+      <article class="case">
+        <div class="case-head">
+          <h3>Inventory System</h3>
+          <p class="case-cat mono" data-i18n="case_cat_4">Core system</p>
+        </div>
+        <div class="case-body">
+          <p class="case-desc" data-i18n="case_d4">Modular inventory framework for Unreal Engine: stacking, equipping, dropping and UI integration — built to be dropped into other projects.</p>
+          <p class="case-tech mono">Unreal Engine 5 · C++ · UI</p>
+          <a class="link-arrow" href="https://github.com/yilmazhalilibr/Unreal_Inventory" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+
+      <p class="more">
+        <span class="mono" data-i18n="more_label">Also on GitHub:</span>
+        <a href="https://github.com/yilmazhalilibr/Unreal_ManufactureRepo" target="_blank" rel="noopener" data-i18n="more_1">Manufacturing System</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://github.com/yilmazhalilibr/DesignPatterns" target="_blank" rel="noopener" data-i18n="more_2">Design Patterns C#</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://github.com/yilmazhalilibr?tab=repositories" target="_blank" rel="noopener" data-i18n="more_all">All repositories</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ───────────────────────────────────────────────────── -->
+  <section id="experience" class="section">
+    <div class="container">
+      <h2 class="section-label mono" data-i18n="sec_xp">Experience</h2>
+      <ul class="xp-list">
+        <li class="xp">
+          <p class="xp-when mono" data-i18n="xp1_when">Jul 2026 — Present</p>
           <div>
-            <div class="game-card-title">SpaceBourne 2</div>
-            <div class="game-review-score" style="margin-top:0.4rem;"><span data-i18n="sb2_score">★ Mostly Positive &nbsp;· 3,278 reviews on Steam</span></div>
+            <h3 class="xp-role"><span data-i18n="xp1_role">Unreal Engine Developer</span> <span class="org">· <span data-i18n="xp1_org">Velovis Games Studio</span></span></h3>
+            <p class="xp-desc" data-i18n="xp1_desc">Working on Illegal Mechanic Simulator — a co-op repair-shop sim, upcoming on Steam.</p>
           </div>
-          <div class="game-card-meta">
-            <span class="game-released-badge">✓ <span data-i18n="lbl_released">Released</span></span>
-            <span style="font-size:0.7rem;color:var(--muted);">Nov 18, 2025</span>
+        </li>
+        <li class="xp">
+          <p class="xp-when mono" data-i18n="xp2_when">May 2025 — Present</p>
+          <div>
+            <h3 class="xp-role"><span data-i18n="xp2_role">MMORPG Server Developer (Freelance)</span> <span class="org">· <span data-i18n="xp2_org">M2 Private Server</span></span></h3>
+            <p class="xp-desc" data-i18n="xp2_desc">Metin2 private server: game systems, content and tooling in Lua and C.</p>
           </div>
-        </div>
-        <p class="game-card-desc" data-i18n="sb2_desc">A single-player open-universe RPG and third-person shooter. Build your own empire across tens of thousands of procedurally generated solar systems with mining, trading, piracy, crafting, faction diplomacy, and base building.</p>
-        <div class="game-card-footer">
-          <div class="game-card-tags"><span class="tag">Space RPG</span><span class="tag">Open World</span><span class="tag">Unreal Engine</span><span class="tag">Base Building</span><span class="tag">Procedural</span></div>
-          <span class="game-card-cta" style="color:var(--accent);" data-i18n="view_steam">View on Steam →</span>
-        </div>
-      </div>
-    </a>
+        </li>
+        <li class="xp">
+          <p class="xp-when mono" data-i18n="xp3_when">Jun 2025 — Sep 2026</p>
+          <div>
+            <h3 class="xp-role"><span data-i18n="xp3_role">Unreal Engine Developer</span> <span class="org">· <span data-i18n="xp3_org">Mania Interactive — independent studio</span></span></h3>
+            <p class="xp-desc" data-i18n="xp3_desc">MvsM and Terminal Toilet Simulator — both in development on Steam.</p>
+          </div>
+        </li>
+        <li class="xp">
+          <p class="xp-when mono" data-i18n="xp4_when">Nov 2023 — May 2025</p>
+          <div>
+            <h3 class="xp-role"><span data-i18n="xp4_role">Unreal Engine Developer</span> <span class="org">· <span data-i18n="xp4_org">DBK Games</span></span></h3>
+            <p class="xp-desc" data-i18n="xp4_desc">SpaceBourne 2 (released 2025) and SpaceBourne 3.</p>
+          </div>
+        </li>
+        <li class="xp">
+          <p class="xp-when mono">2022</p>
+          <div>
+            <h3 class="xp-role"><span data-i18n="xp5_role">Unity Developer</span> <span class="org">· <span data-i18n="xp5_org">ELA Game Studio</span></span></h3>
+            <p class="xp-desc" data-i18n="xp5_desc">Internship to full-time. Mobile game development, gameplay prototyping and UI.</p>
+          </div>
+        </li>
+        <li class="xp">
+          <p class="xp-when mono" data-i18n="xp6_when">3-month project</p>
+          <div>
+            <h3 class="xp-role"><span data-i18n="xp6_role">Developer</span> <span class="org">· <span data-i18n="xp6_org">ARC Savunma Yazılım</span></span></h3>
+            <p class="xp-desc" data-i18n="xp6_desc">Simulation and visualization tools for defense applications, built under university mentorship.</p>
+          </div>
+        </li>
+        <li class="xp">
+          <p class="xp-when mono" data-i18n="xp_edu_when">Education</p>
+          <div>
+            <h3 class="xp-role"><span data-i18n="xp_edu_role">Ege University — Computer Programming</span></h3>
+            <p class="xp-desc" data-i18n="xp_edu_desc">Graduated top of the department.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-    <div style="margin-top:3rem;">
-      <div class="section-label reveal" style="margin-bottom:1.5rem;" data-i18n="in_dev">In Development</div>
-      <div class="games-grid-2">
-        <a href="https://store.steampowered.com/app/1289320/MvsM/" target="_blank" class="game-card reveal">
-          <div class="game-card-img-wrap"><img class="game-card-img" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1289320/header.jpg?t=1759434138" alt="MvsM"/></div>
-          <div class="game-card-body">
-            <div class="game-card-header">
-              <div class="game-card-title">MvsM</div>
-              <div class="game-card-meta">
-                <span class="game-soon-badge" style="background:rgba(255,77,109,0.1);color:#ff4d6d;border:1px solid rgba(255,77,109,0.3);">
-                  <span style="width:6px;height:6px;border-radius:50%;background:#ff4d6d;animation:pulse 2s ease infinite;display:inline-block;"></span>
-                  <span data-i18n="lbl_soon">Coming Soon</span>
-                </span>
-              </div>
-            </div>
-            <p class="game-card-desc" data-i18n="mvsm_desc">Magic vs Technology — cartoon-style co-op PvE for 1–8 players. Two teams fight enemy waves with deep skill system, character customization, and boss battles.</p>
-            <div class="game-card-footer">
-              <div class="game-card-tags">
-                <span class="tag" style="background:rgba(255,77,109,0.08);color:#ff4d6d;border-color:rgba(255,77,109,0.25);">Co-op</span>
-                <span class="tag" style="background:rgba(255,77,109,0.08);color:#ff4d6d;border-color:rgba(255,77,109,0.25);">Roguelike</span>
-                <span class="tag" style="background:rgba(255,77,109,0.08);color:#ff4d6d;border-color:rgba(255,77,109,0.25);">1–8 Players</span>
-              </div>
-              <span class="game-card-cta" style="color:#ff4d6d;" data-i18n="lbl_wishlist">Wishlist →</span>
-            </div>
-          </div>
-        </a>
-        <a href="https://store.steampowered.com/app/3314740/Terminal_Toilet_Simulator/" target="_blank" class="game-card reveal">
-          <div class="game-card-img-wrap"><img class="game-card-img" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3314740/fca627860815ad95f1a17a75e7100dea9e26b405/header.jpg?t=1760650003" alt="Terminal Toilet Simulator"/></div>
-          <div class="game-card-body">
-            <div class="game-card-header">
-              <div class="game-card-title">Terminal Toilet Simulator</div>
-              <div class="game-card-meta">
-                <span class="game-soon-badge" style="background:rgba(255,200,0,0.1);color:#ffc800;border:1px solid rgba(255,200,0,0.3);">
-                  <span style="width:6px;height:6px;border-radius:50%;background:#ffc800;animation:pulse 2s ease infinite;display:inline-block;"></span>
-                  <span data-i18n="lbl_very_soon">Very Soon</span>
-                </span>
-              </div>
-            </div>
-            <p class="game-card-desc" data-i18n="tts_desc">Buy an old, dirty public toilet — clean it, decorate it, and run it. Deal with colorful customers and grow your restroom empire in this absurdist simulation.</p>
-            <div class="game-card-footer">
-              <div class="game-card-tags">
-                <span class="tag" style="background:rgba(255,200,0,0.08);color:#ffc800;border-color:rgba(255,200,0,0.25);">Simulation</span>
-                <span class="tag" style="background:rgba(255,200,0,0.08);color:#ffc800;border-color:rgba(255,200,0,0.25);">Management</span>
-                <span class="tag" style="background:rgba(255,200,0,0.08);color:#ffc800;border-color:rgba(255,200,0,0.25);">Comedy</span>
-              </div>
-              <span class="game-card-cta" style="color:#ffc800;" data-i18n="lbl_wishlist">Wishlist →</span>
-            </div>
-          </div>
-        </a>
+  <!-- ── TECHNICAL STACK ──────────────────────────────────────────────── -->
+  <section id="stack" class="section">
+    <div class="container">
+      <h2 class="section-label mono" data-i18n="sec_stack">Technical Stack</h2>
+      <dl class="stack">
+        <div><dt data-i18n="stack_lang">Languages</dt><dd class="mono">C++ · C# · Lua</dd></div>
+        <div><dt data-i18n="stack_engine">Engine</dt><dd class="mono">Unreal Engine 5</dd></div>
+        <div><dt data-i18n="stack_gameplay">Gameplay</dt><dd class="mono">GAS · AI · Inventory · Combat · Ability Systems</dd></div>
+        <div><dt data-i18n="stack_net">Networking</dt><dd class="mono">Replication · Dedicated Servers · Server-authoritative systems</dd></div>
+        <div><dt data-i18n="stack_mmo">MMO Server</dt><dd class="mono">Metin2 private server · TCP · Lua · C</dd></div>
+        <div><dt data-i18n="stack_db">Databases</dt><dd class="mono">MySQL · MariaDB · Redis</dd></div>
+        <div><dt data-i18n="stack_backend">Backend</dt><dd class="mono">AWS · FastAPI · PHP</dd></div>
+        <div><dt data-i18n="stack_infra">Infra</dt><dd class="mono">nginx · Cloudflare · FreeBSD</dd></div>
+        <div><dt data-i18n="stack_tools">Tools</dt><dd class="mono">Git · GitHub</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ────────────────────────────────────────────────────────── -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-label mono" data-i18n="sec_about">About</h2>
+      <div class="about">
+        <p data-i18n="about_p1">I'm a gameplay programmer based in İzmir, Turkey. I work mostly in Unreal Engine and C++ — gameplay systems, multiplayer networking and the performance-sensitive parts of game code.</p>
+        <p data-i18n="about_p2">I've been working in games since 2022: Unity mobile projects first, then commercial Unreal Engine titles. I studied Computer Programming at Ege University and graduated top of the department.</p>
+        <p data-i18n="about_p3">Outside of studio work I run a Metin2 private server project (Lua / C) and keep a set of open-source Unreal Engine systems on GitHub.</p>
       </div>
     </div>
+  </section>
+
+  <!-- ── CONTACT ──────────────────────────────────────────────────────── -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-label mono" data-i18n="sec_contact">Contact</h2>
+      <p class="contact-intro" data-i18n="contact_intro">I'm open to gameplay programming / Unreal Engine opportunities.</p>
+      <ul class="contact-list">
+        <li>
+          <span class="lbl mono" data-i18n="contact_email">Email</span>
+          <span class="val"><a href="mailto:yilmazhalilibr@gmail.com">yilmazhalilibr@gmail.com</a>
+            <button type="button" id="copy-email" class="copy-btn mono" data-i18n="copy_btn">Copy</button></span>
+        </li>
+        <li>
+          <span class="lbl mono">GitHub</span>
+          <span class="val"><a href="https://github.com/yilmazhalilibr" target="_blank" rel="noopener">yilmazhalilibr</a></span>
+        </li>
+        <li>
+          <span class="lbl mono">LinkedIn</span>
+          <span class="val"><a href="https://www.linkedin.com/in/halil-ibrahim-yilmaz-7a4629209/" target="_blank" rel="noopener">halil-ibrahim-yilmaz</a></span>
+        </li>
+        <li>
+          <span class="lbl mono" data-i18n="contact_resume">Resume</span>
+          <span class="val"><a href="Halil_Ibrahim_YILMAZ_CV.pdf" download data-i18n="resume_val">PDF · Download</a></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="mono">© 2026 Halil İbrahim Yılmaz · İzmir, Türkiye</p>
   </div>
-</div>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-layout">
-    <div class="about-text reveal">
-      <div class="section-label" data-i18n="about_label">About</div>
-      <h2 class="section-title" data-i18n="about_title">Playing Life.<br>Building Worlds.</h2>
-      <p data-i18n="about_p1">I'm <strong>Halil İbrahim Yılmaz</strong>, a game developer with a deep focus on Unreal Engine 5 and systems programming. I enjoy tackling the hard problems — networked gameplay, complex mechanics, and architectural challenges that make games feel <strong>alive</strong>.</p>
-      <p data-i18n="about_p2">My work spans <strong>MOBA systems</strong>, <strong>action roguelikes</strong>, <strong>building mechanics</strong>, and <strong>multiplayer infrastructure</strong>. Good game code must be technically rigorous and creatively enabling.</p>
-      <p data-i18n="about_p3">I approach every project with the mindset of a player: if it doesn't feel right, it isn't done yet.</p>
-      <div style="margin-top:2rem;"><a href="https://www.linkedin.com/in/halil-ibrahim-yilmaz-7a4629209/" target="_blank" class="btn btn-outline" data-i18n="linkedin_btn">LinkedIn Profile ↗</a></div>
-    </div>
-    <div class="reveal">
-      <div class="section-label" data-i18n="journey_label">Journey</div>
-      <div class="timeline">
-        <div class="timeline-item"><div class="timeline-dot"></div><div>
-          <div class="timeline-year" data-i18n="tl1_year">NOW</div>
-          <div class="timeline-role" data-i18n="tl1_role">Game Developer</div>
-          <div class="timeline-place">Unreal Engine 5 · C++ · AWS</div>
-        </div></div>
-        <div class="timeline-item"><div class="timeline-dot"></div><div>
-          <div class="timeline-year">2023 – 2025 · 1Y 7M</div>
-          <div class="timeline-role">Game Developer @ DBK Games</div>
-          <div class="timeline-place">SpaceBourne 2 · SpaceBourne 3</div>
-        </div></div>
-        <div class="timeline-item"><div class="timeline-dot"></div><div>
-          <div class="timeline-year">INTERNSHIP · 4M</div>
-          <div class="timeline-role">Intern Developer @ Ela Game Studio</div>
-          <div class="timeline-place" data-i18n="tl_ela">Indie mobile game dev · UI & gameplay prototyping</div>
-        </div></div>
-        <div class="timeline-item"><div class="timeline-dot"></div><div>
-          <div class="timeline-year">PROJECT · 3M</div>
-          <div class="timeline-role" data-i18n="tl_arc_role">Developer @ ARC Savunma Yazılım</div>
-          <div class="timeline-place" data-i18n="tl_arc_place">Defense simulation & visualization tools</div>
-        </div></div>
-        <div class="timeline-item"><div class="timeline-dot"></div><div>
-          <div class="timeline-year" data-i18n="tl_edu_year">EDUCATION</div>
-          <div class="timeline-role" data-i18n="tl_edu_role">Ege University — Computer Programming</div>
-          <div class="timeline-place" data-i18n="tl_edu_place">Graduated top of the department 🏆</div>
-        </div></div>
-        <div class="timeline-item"><div class="timeline-dot"></div><div>
-          <div class="timeline-year" data-i18n="tl2_year">ONGOING</div>
-          <div class="timeline-role" data-i18n="tl2_role">Open Source Projects</div>
-          <div class="timeline-place" data-i18n="tl2_place">74+ repositories on GitHub</div>
-        </div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<div class="contact-wrap" id="contact">
-  <div class="contact-inner">
-    <div class="reveal">
-      <div class="status-badge"><div class="status-dot"></div><span data-i18n="open_to">Open to opportunities</span></div>
-      <div class="section-label" data-i18n="contact_label">Contact</div>
-      <h2 class="section-title" data-i18n="contact_title">Let's Build<br>Something Great.</h2>
-      <p style="font-size:0.85rem;color:var(--muted);line-height:1.8;max-width:380px;margin-top:1rem;" data-i18n="contact_sub">Looking for a game developer who thinks deeply about systems and ships quality code? Let's talk.</p>
-    </div>
-    <div class="reveal">
-      <div class="contact-links">
-        <a href="mailto:yilmazhalilibr@gmail.com" class="contact-link"><span class="contact-link-icon">✉️</span><span>Email</span><span class="contact-link-value">yilmazhalilibr@gmail.com</span></a>
-        <a href="https://github.com/yilmazhalilibr" target="_blank" class="contact-link"><span class="contact-link-icon">🐙</span><span>GitHub</span><span class="contact-link-value">yilmazhalilibr</span></a>
-        <a href="https://www.linkedin.com/in/halil-ibrahim-yilmaz-7a4629209/" target="_blank" class="contact-link"><span class="contact-link-icon">💼</span><span>LinkedIn</span><span class="contact-link-value">Halil İbrahim Yılmaz</span></a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CV DOWNLOAD -->
-<div style="background:var(--surface);border-top:1px solid var(--border);">
-  <div style="max-width:1200px;margin:0 auto;padding:4rem 3rem;">
-    <div style="display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center;" class="cv-grid">
-
-      <!-- Left: text -->
-      <div class="reveal">
-        <div class="section-label" data-i18n="cv_label">Resume</div>
-        <h2 class="section-title" style="font-size:clamp(1.6rem,3vw,2.4rem);" data-i18n="cv_title">Download My CV</h2>
-        <p style="font-size:0.82rem;color:var(--muted);margin-top:0.5rem;max-width:420px;line-height:1.8;" data-i18n="cv_sub">Full résumé with education, work experience, and technical skills.</p>
-
-        <!-- Email copy card -->
-        <div style="margin-top:1.8rem;display:inline-flex;align-items:center;gap:0;border:1px solid var(--border);border-radius:4px;overflow:hidden;background:var(--card);">
-          <div style="padding:0.7rem 1.2rem;font-family:var(--font-mono);font-size:0.78rem;color:var(--accent);letter-spacing:0.03em;border-right:1px solid var(--border);">
-            ✉️ &nbsp;yilmazhalilibr@gmail.com
-          </div>
-          <button
-            id="copyEmailBtn"
-            onclick="copyEmail()"
-            style="padding:0.7rem 1.1rem;background:transparent;border:none;color:var(--muted);font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.08em;cursor:pointer;transition:all 0.2s;white-space:nowrap;"
-            onmouseover="this.style.color='var(--accent)';this.style.background='rgba(200,255,0,0.06)'"
-            onmouseout="this.style.color='var(--muted)';this.style.background='transparent'"
-            data-i18n-copy="copy_btn"
-          >COPY</button>
-        </div>
-      </div>
-
-      <!-- Right: download button -->
-      <div class="reveal" style="display:flex;align-items:center;">
-        <a href="Halil_Ibrahim_YILMAZ_CV.pdf" download="Halil_Ibrahim_YILMAZ_CV.pdf"
-           style="display:inline-flex;flex-direction:column;align-items:center;gap:0.5rem;padding:2rem 2.5rem;background:var(--card);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:all 0.25s;position:relative;overflow:hidden;"
-           onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(200,255,0,0.15)'"
-           onmouseout="this.style.borderColor='var(--border)';this.style.transform='none';this.style.boxShadow='none'">
-          <!-- accent top bar -->
-          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);"></div>
-          <!-- PDF icon -->
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="12" y1="18" x2="12" y2="12"/>
-            <polyline points="9 15 12 18 15 15"/>
-          </svg>
-          <span style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:#e8e8f0;" data-i18n="cv_btn">Download CV</span>
-          <span style="font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;">PDF · 1 PAGE</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<style>
-  @media(max-width:700px){ .cv-grid{ grid-template-columns:1fr !important; } }
-</style>
-
-<footer>
-  <p>© 2026 Halil İbrahim Yılmaz</p>
-  <p data-i18n="footer_txt">Built with care. Powered by 🕹️</p>
 </footer>
 
-<script>
-// ── TRANSLATIONS ─────────────────────────────────────────────────────────────
-const T = {
-en:{
-  nav_skills:"Skills",nav_projects:"Projects",nav_games:"Games",nav_about:"About",nav_contact:"Contact",
-  hero_eyebrow:"Available for opportunities",hero_title:"Game Developer",
-  hero_desc:"Unreal Engine 5 specialist focused on gameplay systems, multiplayer architecture, and game mechanics. Passionate about building complex and scalable game systems from the ground up — with C++ and a love for the craft.",
-  cta_projects:"View Projects →",badge_repos:"Repos",badge_engine:"Primary Engine",badge_lang:"Primary Lang",
-  skills_label:"Expertise",skills_title:"What I Build",skills_sub:"Deep focus on Unreal Engine systems, multiplayer architecture, and gameplay mechanics.",
-  sk1_name:"Unreal Engine 5",sk1_desc:"Advanced UE5 development including GAS, custom game modes, level design tooling, and performance optimization.",
-  sk2_name:"Multiplayer Systems",sk2_desc:"Networked gameplay with AWS integration. Replication, dedicated server setup, matchmaking, and authoritative server-client architecture.",
-  sk3_name:"Gameplay Architecture",sk3_desc:"Inventory systems, building mechanics, combat systems, action-roguelike loops, and manufacturing simulation — built cleanly and extensibly.",
-  sk4_name:"Design Patterns",sk4_desc:"Software design patterns in game development contexts. Clean architecture, SOLID principles, and scalable code design with C# and C++.",
-  sk5_name:"Game Systems",sk5_desc:"End-to-end system design: from high-level game feel to low-level implementation. Fortnite-style building, MOBA mechanics, and roguelike systems.",
-  sk6_name:"Cloud & Backend",sk6_desc:"Amazon Web Services integration for multiplayer game infrastructure. Scalable backend design for online game features.",
-  proj_label:"Work",proj_title:"Featured Projects",proj_sub:"A selection of game systems and mechanics built with Unreal Engine 5 and C++.",
-  p1_type:"Multiplayer MOBA",p1_desc:"A MOBA on UE5.6 combining GAS with AWS-backed multiplayer infrastructure. Designed for scalable online play.",
-  p2_type:"Action Roguelike",p2_desc:"Dynamic combat mechanics, procedural challenge loops, and ability-based progression systems in Unreal Engine.",
-  p3_type:"Building System",p3_name:"Fortnite-Style Builder",p3_desc:"Piece-by-piece placement, editing, and real-time destruction inspired by Fortnite's construction mechanics.",
-  p4_type:"Simulation",p4_name:"Manufacturing System",p4_desc:"Resource gathering, processing pipelines, and factory automation mechanics in a production simulation game system.",
-  p5_type:"Core System",p5_name:"Inventory System",p5_desc:"Modular inventory for Unreal Engine. Supports stacking, equipping, dropping, and UI integration. Easily extended and reused.",
-  p6_type:"Engineering",p6_name:"Design Patterns",p6_desc:"Clean C# implementation of creational, structural, and behavioral patterns with game-relevant examples.",
-  view_gh:"View on GitHub →",
-  games_label:"Commercial Work",games_title:"Games on Steam",games_sub:"Published titles and upcoming releases I've contributed to.",
-  sb2_score:"★ Mostly Positive · 3,278 reviews on Steam",lbl_released:"Released",
-  sb2_desc:"A single-player open-universe RPG and third-person shooter. Build your empire across procedurally generated solar systems with mining, trading, piracy, crafting, faction diplomacy, and base building.",
-  view_steam:"View on Steam →",in_dev:"In Development",
-  lbl_soon:"Coming Soon",lbl_very_soon:"Very Soon",lbl_wishlist:"Wishlist →",
-  mvsm_desc:"Magic vs Technology — cartoon-style co-op PvE for 1–8 players. Two teams fight enemy waves with deep skill system, character customization, and boss battles.",
-  tts_desc:"Buy an old, dirty public toilet — clean it, decorate it, and run it. Deal with colorful customers and grow your restroom empire in this absurdist simulation.",
-  about_label:"About",about_title:"Playing Life.<br>Building Worlds.",
-  about_p1:"I'm <strong>Halil İbrahim Yılmaz</strong>, a game developer with a deep focus on Unreal Engine 5 and systems programming. I enjoy tackling hard problems — networked gameplay, complex mechanics, and architectural challenges that make games feel <strong>alive</strong>.",
-  about_p2:"My work spans <strong>MOBA systems</strong>, <strong>action roguelikes</strong>, <strong>building mechanics</strong>, and <strong>multiplayer infrastructure</strong>. Good game code must be technically rigorous and creatively enabling.",
-  about_p3:"I approach every project with the mindset of a player: if it doesn't feel right, it isn't done yet.",
-  linkedin_btn:"LinkedIn Profile ↗",journey_label:"Journey",
-  tl1_year:"NOW",tl1_role:"Game Developer",tl2_year:"ONGOING",tl2_role:"Open Source Projects",tl2_place:"74+ repositories on GitHub",
-  tl3_year:"SYSTEMS",tl3_role:"Gameplay Architecture",tl4_year:"LEARNING",tl4_role:"Software Engineering",tl4_place:"Design Patterns · Clean Code · SOLID",
-  open_to:"Open to opportunities",contact_label:"Contact",contact_title:"Let's Build<br>Something Great.",
-  contact_sub:"Looking for a game developer who thinks deeply about systems and ships quality code? Let's talk.",
-  footer_txt:"Built with care. Powered by 🕹️",
-  cv_label:"Resume",cv_title:"Download CV",cv_sub:"Full résumé with education, work experience, and technical skills.",cv_btn:"Download CV",copy_btn:"COPY"
-},
-tr:{
-  nav_skills:"Yetenekler",nav_projects:"Projeler",nav_games:"Oyunlar",nav_about:"Hakkımda",nav_contact:"İletişim",
-  hero_eyebrow:"Fırsatlara açığım",hero_title:"Oyun Geliştirici",
-  hero_desc:"Oyun sistemleri, çok oyunculu mimari ve oyun mekaniği konularında uzmanlaşmış Unreal Engine 5 geliştiricisi. C++ ile sıfırdan karmaşık ve ölçeklenebilir oyun sistemleri inşa etme tutkusuyla.",
-  cta_projects:"Projeleri Gör →",badge_repos:"Repo",badge_engine:"Ana Motor",badge_lang:"Ana Dil",
-  skills_label:"Uzmanlık",skills_title:"Ne İnşa Ediyorum",skills_sub:"Unreal Engine sistemleri, çok oyunculu mimari ve oyun mekaniği üzerine derin odak.",
-  sk1_name:"Unreal Engine 5",sk1_desc:"GAS, özel oyun modları, seviye tasarım araçları ve performans optimizasyonunu kapsayan gelişmiş UE5 geliştirme.",
-  sk2_name:"Çok Oyunculu Sistemler",sk2_desc:"AWS entegrasyonlu ağ oynanışı. Replikasyon, özel sunucu, eşleştirme ve otoriter sunucu-istemci mimarisi.",
-  sk3_name:"Oyun Mimarisi",sk3_desc:"Envanter sistemleri, inşa mekaniği, dövüş sistemleri, roguelike döngüleri ve üretim simülasyonu — temiz ve genişletilebilir.",
-  sk4_name:"Tasarım Kalıpları",sk4_desc:"Oyun geliştirmede yazılım tasarım kalıpları. Temiz mimari, SOLID prensipleri, C# ve C++ ile ölçeklenebilir kod.",
-  sk5_name:"Oyun Sistemleri",sk5_desc:"Üst düzey oyun hissinden alt düzey uygulamaya kadar uçtan uca sistem tasarımı. MOBA, roguelike ve Fortnite tarzı inşa.",
-  sk6_name:"Bulut & Arka Uç",sk6_desc:"Çok oyunculu oyun altyapısı için AWS entegrasyonu. Çevrimiçi oyun özellikleri için ölçeklenebilir arka uç.",
-  proj_label:"Çalışmalar",proj_title:"Öne Çıkan Projeler",proj_sub:"Unreal Engine 5 ve C++ ile inşa edilmiş oyun sistemleri ve mekaniklerinden bir seçki.",
-  p1_type:"Çok Oyunculu MOBA",p1_desc:"GAS ve AWS destekli çok oyunculu altyapıyı birleştiren UE5.6 tabanlı MOBA.",
-  p2_type:"Aksiyon Roguelike",p2_desc:"Unreal Engine'de dinamik dövüş mekaniği, prosedürel zorluk döngüleri ve yetenek tabanlı ilerleme.",
-  p3_type:"İnşa Sistemi",p3_name:"Fortnite Tarzı İnşa",p3_desc:"Fortnite'ın inşa mekaniğinden ilham alan tam özellikli inşa sistemi. Parça parça yerleştirme, düzenleme ve gerçek zamanlı yıkım.",
-  p4_type:"Simülasyon",p4_name:"Üretim Sistemi",p4_desc:"Kaynak toplama, işleme hatları ve fabrika otomasyon mekaniğini kapsayan üretim simülasyon sistemi.",
-  p5_type:"Temel Sistem",p5_name:"Envanter Sistemi",p5_desc:"Unreal Engine için modüler envanter sistemi. Yığma, donatma, bırakma ve UI entegrasyonunu destekler.",
-  p6_type:"Mühendislik",p6_name:"Tasarım Kalıpları",p6_desc:"C# ile yazılım tasarım kalıplarının temiz uygulaması; oyunla ilgili örneklerle yaratıcı, yapısal ve davranışsal kalıplar.",
-  view_gh:"GitHub'da Gör →",
-  games_label:"Ticari Çalışmalar",games_title:"Steam'deki Oyunlar",games_sub:"Katkıda bulunduğum yayınlanmış ve yaklaşan oyunlar.",
-  sb2_score:"★ Çoğunlukla Olumlu · 3.278 Steam incelemesi",lbl_released:"Yayınlandı",
-  sb2_desc:"Tek oyunculu açık evren RPG ve üçüncü şahıs nişancı. On binlerce prosedürel güneş sisteminde kendi imparatorluğunu kur: madencilik, ticaret, korsanlık, zanaat ve hizip diplomasisi.",
-  view_steam:"Steam'de Gör →",in_dev:"Geliştirmede",
-  lbl_soon:"Yakında",lbl_very_soon:"Çok Yakında",lbl_wishlist:"İstek Listesine Ekle →",
-  mvsm_desc:"Sihir ve Teknoloji — 1–8 oyuncu için karikatür tarzı eş zamanlı PvE. İki takım derin yetenek sistemi, karakter özelleştirme ve patron savaşlarıyla düşman dalgalarına karşı savaşır.",
-  tts_desc:"Eski, kirli bir umumi tuvalet satın al — temizle, dekore et ve işlet! Bu tuhaf simülasyonda renkli müşterilerle baş ederek tuvalet imparatorluğunu büyüt.",
-  about_label:"Hakkımda",about_title:"Hayatı Oynuyorum.<br>Dünyalar İnşa Ediyorum.",
-  about_p1:"Ben <strong>Halil İbrahim Yılmaz</strong>, Unreal Engine 5 ve sistem programlamaya odaklanan bir oyun geliştiricisiyim. Zor sorunlarla — ağ oynanışı, karmaşık mekanikler ve oyunları <strong>canlı</strong> hissettiren mimari zorluklarla — uğraşmaktan keyif alıyorum.",
-  about_p2:"Çalışmalarım <strong>MOBA sistemleri</strong>, <strong>aksiyon roguelike'ları</strong>, <strong>inşa mekaniği</strong> ve <strong>çok oyunculu altyapıyı</strong> kapsar. İyi oyun kodunun hem teknik açıdan titiz hem de yaratıcılığı mümkün kılıcı olması gerektiğine inanıyorum.",
-  about_p3:"Her projeye oyuncu zihniyetiyle yaklaşıyorum: doğru hissettirmiyorsa henüz bitmemiştir.",
-  linkedin_btn:"LinkedIn Profili ↗",journey_label:"Yolculuk",
-  tl1_year:"ŞU AN",tl1_role:"Oyun Geliştirici",tl2_year:"DEVAM EDEN",tl2_role:"Açık Kaynak Projeleri",tl2_place:"GitHub'da 74+ depo",
-  tl3_year:"SİSTEMLER",tl3_role:"Oyun Mimarisi",tl4_year:"ÖĞRENME",tl4_role:"Yazılım Mühendisliği",tl4_place:"Tasarım Kalıpları · Temiz Kod · SOLID",
-  open_to:"Fırsatlara açığım",contact_label:"İletişim",contact_title:"Birlikte Harika<br>Şeyler İnşa Edelim.",
-  contact_sub:"Sistemleri derinden düşünen ve kaliteli kod üreten bir oyun geliştiricisi mi arıyorsunuz? Konuşalım.",
-  footer_txt:"Özenle yapıldı. 🕹️ ile güçlendirildi",
-  cv_label:"Özgeçmiş",cv_title:"CV'yi İndir",cv_sub:"Eğitim, iş deneyimi ve teknik becerilerimi içeren tam özgeçmiş.",cv_btn:"CV'yi İndir",copy_btn:"KOPYALA",
-  tl_ela:"Bağımsız mobil oyun geliştirme · UI ve oynanış prototipleme",
-  tl_arc_role:"Geliştirici @ ARC Savunma Yazılım",tl_arc_place:"Savunma simülasyon ve görselleştirme araçları",
-  tl_edu_year:"EĞİTİM",tl_edu_role:"Ege Üniversitesi — Bilgisayar Programcılığı",tl_edu_place:"Bölüm birincisi olarak mezun 🏆"
-},
-de:{
-  nav_skills:"Fähigkeiten",nav_projects:"Projekte",nav_games:"Spiele",nav_about:"Über mich",nav_contact:"Kontakt",
-  hero_eyebrow:"Offen für neue Chancen",hero_title:"Spieleentwickler",
-  hero_desc:"Unreal Engine 5-Spezialist mit Fokus auf Gameplay-Systeme, Multiplayer-Architektur und Spielmechaniken. Leidenschaft für den Aufbau komplexer und skalierbarer Systeme von Grund auf — mit C++.",
-  cta_projects:"Projekte ansehen →",badge_repos:"Repos",badge_engine:"Hauptengine",badge_lang:"Hauptsprache",
-  skills_label:"Expertise",skills_title:"Was ich baue",skills_sub:"Tiefer Fokus auf Unreal Engine-Systeme, Multiplayer-Architektur und Spielmechaniken.",
-  sk1_name:"Unreal Engine 5",sk1_desc:"Fortgeschrittene UE5-Entwicklung mit GAS, benutzerdefinierten Spielmodi, Level-Design-Tools und Leistungsoptimierung.",
-  sk2_name:"Multiplayer-Systeme",sk2_desc:"Vernetztes Gameplay mit AWS-Integration. Replikation, dedizierter Server, Matchmaking und autoritative Client-Server-Architektur.",
-  sk3_name:"Gameplay-Architektur",sk3_desc:"Inventarsysteme, Baumechaniken, Kampfsysteme, Roguelike-Schleifen und Fertigungssimulation — sauber und erweiterbar.",
-  sk4_name:"Entwurfsmuster",sk4_desc:"Software-Entwurfsmuster im Spielentwicklungskontext. Saubere Architektur, SOLID-Prinzipien und skalierbares Code-Design mit C# und C++.",
-  sk5_name:"Spielsysteme",sk5_desc:"End-to-End-Systemdesign: vom High-Level-Spielgefühl bis zur Low-Level-Implementierung. Fortnite-Bau, MOBA-Mechaniken, Roguelike-Systeme.",
-  sk6_name:"Cloud & Backend",sk6_desc:"AWS-Integration für Multiplayer-Spielinfrastruktur. Skalierbares Backend-Design für Online-Spielfunktionen.",
-  proj_label:"Arbeit",proj_title:"Ausgewählte Projekte",proj_sub:"Eine Auswahl von Spielsystemen und Mechaniken, entwickelt mit Unreal Engine 5 und C++.",
-  p1_type:"Multiplayer MOBA",p1_desc:"Ein MOBA auf UE5.6, das GAS mit AWS-gestützter Multiplayer-Infrastruktur kombiniert.",
-  p2_type:"Action-Roguelike",p2_desc:"Dynamische Kampfmechaniken, prozedurale Herausforderungsschleifen und fähigkeitsbasierte Progression in Unreal Engine.",
-  p3_type:"Bausystem",p3_name:"Fortnite-ähnlicher Builder",p3_desc:"Vollständiges Bausystem inspiriert von Fortnites Baumechanik. Stückweises Platzieren, Bearbeiten und Echtzeit-Zerstörung.",
-  p4_type:"Simulation",p4_name:"Fertigungssystem",p4_desc:"Ressourcensammlung, Verarbeitungspipelines und Fabrikautomatisierung in einem Fertigungssimulationssystem.",
-  p5_type:"Kernsystem",p5_name:"Inventarsystem",p5_desc:"Modulares Inventarsystem für Unreal Engine. Stapeln, Ausrüsten, Ablegen und UI-Integration.",
-  p6_type:"Engineering",p6_name:"Entwurfsmuster",p6_desc:"Saubere C#-Implementierung von Entwurfsmustern mit spielrelevanten Beispielen.",
-  view_gh:"Auf GitHub ansehen →",
-  games_label:"Kommerzielle Arbeit",games_title:"Spiele auf Steam",games_sub:"Veröffentlichte Titel und kommende Releases, zu denen ich beigetragen habe.",
-  sb2_score:"★ Überwiegend positiv · 3.278 Steam-Bewertungen",lbl_released:"Veröffentlicht",
-  sb2_desc:"Einzelspieler-Open-Universe-RPG und Third-Person-Shooter. Baue dein Imperium über prozedural generierte Sonnensysteme mit Bergbau, Handel, Piraterie, Crafting und Fraktionsdiplomatie.",
-  view_steam:"Auf Steam ansehen →",in_dev:"In Entwicklung",
-  lbl_soon:"Demnächst",lbl_very_soon:"Sehr bald",lbl_wishlist:"Wunschliste →",
-  mvsm_desc:"Magie vs. Technologie — Co-op-PvE im Cartoon-Stil für 1–8 Spieler. Zwei Teams bekämpfen Feindwellen mit tiefem Skillsystem und Bossgefechten.",
-  tts_desc:"Kauf eine alte, schmutzige öffentliche Toilette — reinige sie, dekoriere sie und betreibe sie! Bewältige alle Arten von Kunden in dieser absurden Simulation.",
-  about_label:"Über mich",about_title:"Das Leben spielen.<br>Welten bauen.",
-  about_p1:"Ich bin <strong>Halil İbrahim Yılmaz</strong>, ein Spieleentwickler mit tiefem Fokus auf Unreal Engine 5 und Systemprogrammierung. Ich löse gerne schwierige Probleme — Netzwerk-Gameplay, komplexe Mechaniken und Architekturherausforderungen, die Spiele lebendig wirken lassen.",
-  about_p2:"Meine Arbeit umfasst <strong>MOBA-Systeme</strong>, <strong>Action-Roguelikes</strong>, <strong>Baumechaniken</strong> und <strong>Multiplayer-Infrastruktur</strong>. Guter Spielcode muss technisch präzise und kreativ ermächtigend sein.",
-  about_p3:"Ich gehe jedes Projekt mit der Denkweise eines Spielers an: Wenn es sich nicht richtig anfühlt, ist es noch nicht fertig.",
-  linkedin_btn:"LinkedIn-Profil ↗",journey_label:"Werdegang",
-  tl1_year:"JETZT",tl1_role:"Spieleentwickler",tl2_year:"LAUFEND",tl2_role:"Open-Source-Projekte",tl2_place:"74+ Repositories auf GitHub",
-  tl3_year:"SYSTEME",tl3_role:"Gameplay-Architektur",tl4_year:"LERNEN",tl4_role:"Software-Engineering",tl4_place:"Entwurfsmuster · Clean Code · SOLID",
-  open_to:"Offen für neue Chancen",contact_label:"Kontakt",contact_title:"Lass uns gemeinsam<br>Großartiges erschaffen.",
-  contact_sub:"Suchen Sie einen Spieleentwickler, der tief über Systeme nachdenkt und Qualitätscode liefert? Sprechen wir.",
-  footer_txt:"Mit Sorgfalt gebaut. Angetrieben von 🕹️",
-  cv_label:"Lebenslauf",cv_title:"CV herunterladen",cv_sub:"Vollständiger Lebenslauf mit Ausbildung, Berufserfahrung und technischen Fähigkeiten.",cv_btn:"CV herunterladen",copy_btn:"KOPIEREN",
-  tl_ela:"Indie-Mobile-Spieleentwicklung · UI & Gameplay-Prototyping",
-  tl_arc_role:"Entwickler @ ARC Savunma Yazılım",tl_arc_place:"Simulations- und Visualisierungstools für Verteidigung",
-  tl_edu_year:"AUSBILDUNG",tl_edu_role:"Ege Universität — Computerprogrammierung",tl_edu_place:"Als Jahrgangsbester abgeschlossen 🏆"
-},
-fr:{
-  nav_skills:"Compétences",nav_projects:"Projets",nav_games:"Jeux",nav_about:"À propos",nav_contact:"Contact",
-  hero_eyebrow:"Ouvert aux opportunités",hero_title:"Développeur de jeux",
-  hero_desc:"Spécialiste Unreal Engine 5 focalisé sur les systèmes de gameplay, l'architecture multijoueur et les mécaniques de jeu. Passionné par la création de systèmes complexes et évolutifs — en C++.",
-  cta_projects:"Voir les projets →",badge_repos:"Dépôts",badge_engine:"Moteur principal",badge_lang:"Langage principal",
-  skills_label:"Expertise",skills_title:"Ce que je construis",skills_sub:"Focalisation approfondie sur les systèmes Unreal Engine, l'architecture multijoueur et les mécaniques de jeu.",
-  sk1_name:"Unreal Engine 5",sk1_desc:"Développement UE5 avancé incluant GAS, modes de jeu personnalisés, outils de conception et optimisation des performances.",
-  sk2_name:"Systèmes multijoueur",sk2_desc:"Gameplay en réseau avec intégration AWS. Réplication, serveur dédié, matchmaking et architecture client-serveur autoritaire.",
-  sk3_name:"Architecture de gameplay",sk3_desc:"Systèmes d'inventaire, mécaniques de construction, combat, boucles roguelike et simulation de fabrication.",
-  sk4_name:"Patrons de conception",sk4_desc:"Patrons de conception logiciels dans le développement de jeux. Architecture propre, SOLID et code évolutif en C# et C++.",
-  sk5_name:"Systèmes de jeu",sk5_desc:"Conception de systèmes de bout en bout. Construction style Fortnite, mécaniques MOBA et systèmes roguelike.",
-  sk6_name:"Cloud & Backend",sk6_desc:"Intégration AWS pour l'infrastructure de jeux multijoueurs. Backend évolutif pour les fonctionnalités en ligne.",
-  proj_label:"Travaux",proj_title:"Projets phares",proj_sub:"Une sélection de systèmes et mécaniques construits avec Unreal Engine 5 et C++.",
-  p1_type:"MOBA multijoueur",p1_desc:"Un MOBA sur UE5.6 combinant GAS avec une infrastructure multijoueur AWS. Conçu pour un jeu en ligne évolutif.",
-  p2_type:"Action Roguelike",p2_desc:"Mécaniques de combat dynamiques, boucles de défis procéduraux et progression basée sur les capacités dans Unreal Engine.",
-  p3_type:"Système de construction",p3_name:"Constructeur style Fortnite",p3_desc:"Système de construction complet inspiré de Fortnite. Placement pièce par pièce, édition et destruction en temps réel.",
-  p4_type:"Simulation",p4_name:"Système de fabrication",p4_desc:"Collecte de ressources, pipelines de traitement et automatisation d'usine dans un système de simulation de production.",
-  p5_type:"Système central",p5_name:"Système d'inventaire",p5_desc:"Inventaire modulaire pour Unreal Engine. Empilement, équipement, dépôt et intégration UI.",
-  p6_type:"Ingénierie",p6_name:"Patrons de conception",p6_desc:"Implémentation propre de patrons de conception en C# avec des exemples pertinents pour les jeux.",
-  view_gh:"Voir sur GitHub →",
-  games_label:"Travaux commerciaux",games_title:"Jeux sur Steam",games_sub:"Titres publiés et prochaines sorties auxquels j'ai contribué.",
-  sb2_score:"★ Majoritairement positif · 3 278 avis sur Steam",lbl_released:"Sorti",
-  sb2_desc:"RPG en univers ouvert et jeu de tir à la troisième personne. Construisez votre empire sur des milliers de systèmes solaires procéduraux avec minage, commerce, piraterie et diplomatie de faction.",
-  view_steam:"Voir sur Steam →",in_dev:"En développement",
-  lbl_soon:"Bientôt",lbl_very_soon:"Très bientôt",lbl_wishlist:"Liste de souhaits →",
-  mvsm_desc:"Magie contre Technologie — PvE coopératif style cartoon pour 1–8 joueurs. Deux équipes affrontent des vagues ennemies avec un système de compétences profond et des combats de boss.",
-  tts_desc:"Achetez de vieilles toilettes publiques — nettoyez-les, décorez-les et gérez-les ! Affrontez toutes sortes de clients dans cette simulation absurde.",
-  about_label:"À propos",about_title:"Jouer la vie.<br>Construire des mondes.",
-  about_p1:"Je suis <strong>Halil İbrahim Yılmaz</strong>, développeur de jeux avec un focus profond sur Unreal Engine 5 et la programmation système. J'aime résoudre les problèmes difficiles qui rendent les jeux <strong>vivants</strong>.",
-  about_p2:"Mon travail couvre les <strong>systèmes MOBA</strong>, les <strong>action roguelikes</strong>, les <strong>mécaniques de construction</strong> et l'<strong>infrastructure multijoueur</strong>.",
-  about_p3:"J'aborde chaque projet avec l'état d'esprit d'un joueur : si ça ne se ressent pas bien, ce n'est pas terminé.",
-  linkedin_btn:"Profil LinkedIn ↗",journey_label:"Parcours",
-  tl1_year:"MAINTENANT",tl1_role:"Développeur de jeux",tl2_year:"EN COURS",tl2_role:"Projets open source",tl2_place:"74+ dépôts sur GitHub",
-  tl3_year:"SYSTÈMES",tl3_role:"Architecture de gameplay",tl4_year:"APPRENTISSAGE",tl4_role:"Ingénierie logicielle",tl4_place:"Patrons de conception · Code propre · SOLID",
-  open_to:"Ouvert aux opportunités",contact_label:"Contact",contact_title:"Construisons ensemble<br>quelque chose de grand.",
-  contact_sub:"Vous cherchez un développeur qui réfléchit profondément aux systèmes et livre un code de qualité ? Parlons-en.",
-  footer_txt:"Construit avec soin. Propulsé par 🕹️",
-  cv_label:"CV",cv_title:"Télécharger le CV",cv_sub:"CV complet avec formation, expérience professionnelle et compétences techniques.",cv_btn:"Télécharger le CV",copy_btn:"COPIER",
-  tl_ela:"Développement de jeux mobiles indépendants · Prototypage UI et gameplay",
-  tl_arc_role:"Développeur @ ARC Savunma Yazılım",tl_arc_place:"Outils de simulation et visualisation défense",
-  tl_edu_year:"FORMATION",tl_edu_role:"Université Ege — Programmation informatique",tl_edu_place:"Major de promotion 🏆"
-},
-es:{
-  nav_skills:"Habilidades",nav_projects:"Proyectos",nav_games:"Juegos",nav_about:"Sobre mí",nav_contact:"Contacto",
-  hero_eyebrow:"Abierto a oportunidades",hero_title:"Desarrollador de juegos",
-  hero_desc:"Especialista en Unreal Engine 5 enfocado en sistemas de gameplay, arquitectura multijugador y mecánicas de juego. Apasionado por construir sistemas complejos y escalables desde cero — con C++.",
-  cta_projects:"Ver proyectos →",badge_repos:"Repos",badge_engine:"Motor principal",badge_lang:"Lenguaje principal",
-  skills_label:"Experiencia",skills_title:"Qué construyo",skills_sub:"Enfoque profundo en sistemas de Unreal Engine, arquitectura multijugador y mecánicas de gameplay.",
-  sk1_name:"Unreal Engine 5",sk1_desc:"Desarrollo avanzado UE5 con GAS, modos de juego personalizados, herramientas de diseño de niveles y optimización del rendimiento.",
-  sk2_name:"Sistemas multijugador",sk2_desc:"Gameplay en red con integración AWS. Replicación, servidor dedicado, matchmaking y arquitectura cliente-servidor autoritativa.",
-  sk3_name:"Arquitectura de gameplay",sk3_desc:"Sistemas de inventario, mecánicas de construcción, combate, bucles roguelike y simulación de fabricación.",
-  sk4_name:"Patrones de diseño",sk4_desc:"Patrones de diseño de software en desarrollo de juegos. Arquitectura limpia, SOLID y código escalable con C# y C++.",
-  sk5_name:"Sistemas de juego",sk5_desc:"Diseño de sistemas extremo a extremo. Construcción estilo Fortnite, mecánicas MOBA y sistemas roguelike.",
-  sk6_name:"Cloud & Backend",sk6_desc:"Integración AWS para infraestructura de juegos multijugador. Backend escalable para características de juego en línea.",
-  proj_label:"Trabajo",proj_title:"Proyectos destacados",proj_sub:"Una selección de sistemas y mecánicas construidos con Unreal Engine 5 y C++.",
-  p1_type:"MOBA multijugador",p1_desc:"Un MOBA en UE5.6 que combina GAS con infraestructura multijugador respaldada por AWS.",
-  p2_type:"Acción Roguelike",p2_desc:"Mecánicas de combate dinámicas, bucles de desafíos procedurales y progresión basada en habilidades en Unreal Engine.",
-  p3_type:"Sistema de construcción",p3_name:"Constructor estilo Fortnite",p3_desc:"Sistema de construcción completo inspirado en Fortnite. Colocación pieza a pieza, edición y destrucción en tiempo real.",
-  p4_type:"Simulación",p4_name:"Sistema de fabricación",p4_desc:"Recolección de recursos, pipelines de procesamiento y automatización de fábrica en un sistema de simulación de producción.",
-  p5_type:"Sistema central",p5_name:"Sistema de inventario",p5_desc:"Inventario modular para Unreal Engine. Apilamiento, equipamiento, drop e integración de UI.",
-  p6_type:"Ingeniería",p6_name:"Patrones de diseño",p6_desc:"Implementación limpia de patrones de diseño en C# con ejemplos relevantes para juegos.",
-  view_gh:"Ver en GitHub →",
-  games_label:"Trabajo comercial",games_title:"Juegos en Steam",games_sub:"Títulos publicados y próximos lanzamientos a los que he contribuido.",
-  sb2_score:"★ Mayormente positivo · 3.278 reseñas en Steam",lbl_released:"Lanzado",
-  sb2_desc:"RPG de universo abierto para un jugador y shooter en tercera persona. Construye tu imperio en sistemas solares procedurales con minería, comercio, piratería, artesanía y diplomacia de facciones.",
-  view_steam:"Ver en Steam →",in_dev:"En desarrollo",
-  lbl_soon:"Próximamente",lbl_very_soon:"Muy pronto",lbl_wishlist:"Lista de deseos →",
-  mvsm_desc:"Magia vs Tecnología — PvE cooperativo estilo cartoon para 1–8 jugadores. Dos equipos luchan contra oleadas con sistema de habilidades profundo y batallas contra jefes.",
-  tts_desc:"Compra un viejo baño público sucio — límpialo, decóralo y adminístralo. Lidia con clientes coloridos en esta absurda simulación.",
-  about_label:"Sobre mí",about_title:"Jugando la vida.<br>Construyendo mundos.",
-  about_p1:"Soy <strong>Halil İbrahim Yılmaz</strong>, un desarrollador de juegos con enfoque profundo en Unreal Engine 5 y programación de sistemas. Disfruto resolver problemas difíciles que hacen que los juegos se sientan <strong>vivos</strong>.",
-  about_p2:"Mi trabajo abarca <strong>sistemas MOBA</strong>, <strong>action roguelikes</strong>, <strong>mecánicas de construcción</strong> e <strong>infraestructura multijugador</strong>.",
-  about_p3:"Abordo cada proyecto con la mentalidad de un jugador: si no se siente bien, no está terminado.",
-  linkedin_btn:"Perfil de LinkedIn ↗",journey_label:"Trayectoria",
-  tl1_year:"AHORA",tl1_role:"Desarrollador de juegos",tl2_year:"EN CURSO",tl2_role:"Proyectos de código abierto",tl2_place:"74+ repositorios en GitHub",
-  tl3_year:"SISTEMAS",tl3_role:"Arquitectura de gameplay",tl4_year:"APRENDIENDO",tl4_role:"Ingeniería de software",tl4_place:"Patrones de diseño · Código limpio · SOLID",
-  open_to:"Abierto a oportunidades",contact_label:"Contacto",contact_title:"Construyamos juntos<br>algo grandioso.",
-  contact_sub:"¿Buscas un desarrollador que piense profundamente en sistemas y entregue código de calidad? Hablemos.",
-  footer_txt:"Construido con cuidado. Impulsado por 🕹️",
-  cv_label:"Currículum",cv_title:"Descargar CV",cv_sub:"CV completo con formación, experiencia laboral y habilidades técnicas.",cv_btn:"Descargar CV",copy_btn:"COPIAR",
-  tl_ela:"Desarrollo de juegos móviles indie · Prototipado UI y gameplay",
-  tl_arc_role:"Desarrollador @ ARC Savunma Yazılım",tl_arc_place:"Herramientas de simulación y visualización para defensa",
-  tl_edu_year:"EDUCACIÓN",tl_edu_role:"Universidad Ege — Programación Informática",tl_edu_place:"Graduado con el mejor expediente 🏆"
-},
-zh:{
-  nav_skills:"技能",nav_projects:"项目",nav_games:"游戏",nav_about:"关于",nav_contact:"联系",
-  hero_eyebrow:"欢迎新机会",hero_title:"游戏开发者",
-  hero_desc:"专注于游戏系统、多人游戏架构和游戏机制的 Unreal Engine 5 专家。热衷于用 C++ 从零开始构建复杂且可扩展的游戏系统。",
-  cta_projects:"查看项目 →",badge_repos:"仓库",badge_engine:"主要引擎",badge_lang:"主要语言",
-  skills_label:"专业技能",skills_title:"我构建什么",skills_sub:"深度专注于 Unreal Engine 系统、多人游戏架构和游戏机制。",
-  sk1_name:"Unreal Engine 5",sk1_desc:"高级 UE5 开发，包括 GAS、自定义游戏模式、关卡设计工具和性能优化。",
-  sk2_name:"多人游戏系统",sk2_desc:"集成 AWS 的网络游戏。复制、专用服务器、匹配系统和权威服务器-客户端架构。",
-  sk3_name:"游戏架构",sk3_desc:"库存系统、建造机制、战斗系统、Roguelike 循环和制造模拟 — 清晰且可扩展。",
-  sk4_name:"设计模式",sk4_desc:"游戏开发中的软件设计模式。使用 C# 和 C++ 实现清洁架构、SOLID 原则。",
-  sk5_name:"游戏系统",sk5_desc:"端到端系统设计：堡垒之夜风格建造、MOBA 机制和 Roguelike 系统。",
-  sk6_name:"云端与后端",sk6_desc:"为多人游戏基础设施集成 AWS。可扩展的在线游戏后端设计。",
-  proj_label:"作品",proj_title:"精选项目",proj_sub:"使用 Unreal Engine 5 和 C++ 构建的游戏系统和机制精选。",
-  p1_type:"多人 MOBA",p1_desc:"基于 UE5.6 的 MOBA，将 GAS 与 AWS 多人游戏基础设施相结合。",
-  p2_type:"动作 Roguelike",p2_desc:"Unreal Engine 中的动态战斗机制、程序性挑战循环和基于能力的进阶系统。",
-  p3_type:"建造系统",p3_name:"堡垒之夜风格建造",p3_desc:"受堡垒之夜启发的完整建造系统。支持逐件放置、编辑和实时破坏。",
-  p4_type:"模拟",p4_name:"制造系统",p4_desc:"涵盖资源收集、处理流程和工厂自动化的生产模拟系统。",
-  p5_type:"核心系统",p5_name:"库存系统",p5_desc:"Unreal Engine 的模块化库存系统。支持堆叠、装备、丢弃和 UI 集成。",
-  p6_type:"工程",p6_name:"设计模式",p6_desc:"C# 软件设计模式的清晰实现，包含游戏相关示例。",
-  view_gh:"在 GitHub 上查看 →",
-  games_label:"商业作品",games_title:"Steam 上的游戏",games_sub:"我参与贡献的已发布作品和即将发布的游戏。",
-  sb2_score:"★ 多半好评 · 3,278 条 Steam 评测",lbl_released:"已发布",
-  sb2_desc:"单人开放宇宙 RPG 和第三人称射击游戏。在数以万计的程序生成太阳系中建立帝国，包含采矿、贸易、海盗、工艺制作和派系外交。",
-  view_steam:"在 Steam 上查看 →",in_dev:"开发中",
-  lbl_soon:"即将推出",lbl_very_soon:"非常快",lbl_wishlist:"加入愿望单 →",
-  mvsm_desc:"魔法与科技 — 卡通风格 1–8 人合作 PvE。两队在同一地图对抗敌人波次，具有深度技能系统和 Boss 战。",
-  tts_desc:"买下破旧公共厕所 — 清洁、装饰、经营！在这款荒诞模拟游戏中应对各种顾客，扩大厕所帝国。",
-  about_label:"关于我",about_title:"玩转人生。<br>构建世界。",
-  about_p1:"我是 <strong>Halil İbrahim Yılmaz</strong>，专注于 Unreal Engine 5 和系统编程的游戏开发者。我喜欢解决网络游戏、复杂机制和架构挑战等难题，让游戏感觉<strong>鲜活</strong>。",
-  about_p2:"我的工作涵盖 <strong>MOBA 系统</strong>、<strong>动作 Roguelike</strong>、<strong>建造机制</strong>和<strong>多人游戏基础设施</strong>。",
-  about_p3:"我以玩家思维对待每个项目：感觉不对就还没完成。",
-  linkedin_btn:"LinkedIn 主页 ↗",journey_label:"经历",
-  tl1_year:"现在",tl1_role:"游戏开发者",tl2_year:"持续进行",tl2_role:"开源项目",tl2_place:"GitHub 上 74+ 个仓库",
-  tl3_year:"系统",tl3_role:"游戏架构",tl4_year:"学习",tl4_role:"软件工程",tl4_place:"设计模式 · 整洁代码 · SOLID",
-  open_to:"欢迎新机会",contact_label:"联系",contact_title:"让我们一起<br>创造伟大的东西。",
-  contact_sub:"正在寻找深度思考系统并交付高质量代码的游戏开发者？让我们谈谈。",
-  footer_txt:"用心构建。🕹️ 驱动",
-  cv_label:"简历",cv_title:"下载简历",cv_sub:"包含教育背景、工作经历和技术技能的完整简历。",cv_btn:"下载简历",copy_btn:"复制",
-  tl_ela:"独立手游开发 · UI与游戏原型设计",
-  tl_arc_role:"开发者 @ ARC Savunma Yazılım",tl_arc_place:"国防模拟与可视化工具",
-  tl_edu_year:"教育",tl_edu_role:"爱琴大学 — 计算机编程",tl_edu_place:"系级第一名毕业 🏆"
-},
-ja:{
-  nav_skills:"スキル",nav_projects:"プロジェクト",nav_games:"ゲーム",nav_about:"自己紹介",nav_contact:"連絡",
-  hero_eyebrow:"新しい機会を探しています",hero_title:"ゲーム開発者",
-  hero_desc:"ゲームプレイシステム、マルチプレイヤーアーキテクチャ、ゲームメカニクスに特化した Unreal Engine 5 スペシャリスト。C++ で複雑でスケーラブルなゲームシステムをゼロから構築することに情熱を注いでいます。",
-  cta_projects:"プロジェクトを見る →",badge_repos:"リポジトリ",badge_engine:"メインエンジン",badge_lang:"メイン言語",
-  skills_label:"専門知識",skills_title:"何を作るか",skills_sub:"Unreal Engine システム、マルチプレイヤーアーキテクチャ、ゲームメカニクスに深く特化。",
-  sk1_name:"Unreal Engine 5",sk1_desc:"GAS、カスタムゲームモード、レベルデザインツール、パフォーマンス最適化を含む高度な UE5 開発。",
-  sk2_name:"マルチプレイヤーシステム",sk2_desc:"AWS 統合によるネットワークゲームプレイ。レプリケーション、専用サーバー、マッチメイキング。",
-  sk3_name:"ゲームアーキテクチャ",sk3_desc:"インベントリ、建築メカニクス、戦闘、Roguelike ループ、製造シミュレーション — クリーンで拡張可能。",
-  sk4_name:"デザインパターン",sk4_desc:"ゲーム開発でのソフトウェアデザインパターン。C# と C++ によるクリーンアーキテクチャと SOLID 原則。",
-  sk5_name:"ゲームシステム",sk5_desc:"エンドツーエンドのシステム設計。Fortnite スタイル建築、MOBA メカニクス、Roguelike システム。",
-  sk6_name:"クラウド＆バックエンド",sk6_desc:"マルチプレイヤーゲームインフラ向け AWS 統合。オンラインゲーム向けスケーラブルなバックエンド設計。",
-  proj_label:"作品",proj_title:"注目プロジェクト",proj_sub:"Unreal Engine 5 と C++ で構築したゲームシステムとメカニクスの抜粋。",
-  p1_type:"マルチプレイヤー MOBA",p1_desc:"GAS と AWS ベースのマルチプレイヤーインフラを組み合わせた UE5.6 ベースの MOBA。",
-  p2_type:"アクション Roguelike",p2_desc:"Unreal Engine での動的戦闘メカニクス、プロシージャルチャレンジループ、能力ベースの進行。",
-  p3_type:"建築システム",p3_name:"Fortnite スタイルビルダー",p3_desc:"Fortnite の建築メカニクスにインスパイアされた完全な建築システム。リアルタイム配置・編集・破壊。",
-  p4_type:"シミュレーション",p4_name:"製造システム",p4_desc:"資源収集、処理パイプライン、工場自動化を含む製造シミュレーションシステム。",
-  p5_type:"コアシステム",p5_name:"インベントリシステム",p5_desc:"Unreal Engine 向けモジュラーインベントリ。スタック、装備、ドロップ、UI 統合をサポート。",
-  p6_type:"エンジニアリング",p6_name:"デザインパターン",p6_desc:"ゲーム関連の例を含む C# でのデザインパターンのクリーンな実装。",
-  view_gh:"GitHub で見る →",
-  games_label:"商業作品",games_title:"Steam のゲーム",games_sub:"私が貢献したリリース済みタイトルと近日公開予定のゲーム。",
-  sb2_score:"★ 概ねポジティブ · 3,278 件の Steam レビュー",lbl_released:"リリース済み",
-  sb2_desc:"シングルプレイヤーのオープンユニバース RPG と三人称シューター。プロシージャル生成された太陽系で採掘、取引、海賊行為、クラフト、派閥外交を通じて帝国を築く。",
-  view_steam:"Steam で見る →",in_dev:"開発中",
-  lbl_soon:"近日公開",lbl_very_soon:"もうすぐ",lbl_wishlist:"ウィッシュリストに追加 →",
-  mvsm_desc:"魔法 vs テクノロジー — 1〜8 人向けカートゥーンスタイル協力 PvE。深いスキルシステム、キャラクターカスタマイズ、ボスバトルで敵の波に立ち向かう。",
-  tts_desc:"古い汚れた公衆トイレを買って — 掃除し、装飾し、経営しよう！このシュールなシミュレーションで個性的なお客様と格闘しながらトイレ帝国を拡大しよう。",
-  about_label:"自己紹介",about_title:"人生をプレイする。<br>世界を作る。",
-  about_p1:"私は <strong>Halil İbrahim Yılmaz</strong>、Unreal Engine 5 とシステムプログラミングに特化したゲーム開発者です。ネットワークゲームプレイ、複雑なメカニクス、ゲームを<strong>生き生き</strong>させる課題に取り組むのが好きです。",
-  about_p2:"<strong>MOBA システム</strong>、<strong>アクション Roguelike</strong>、<strong>建築メカニクス</strong>、<strong>マルチプレイヤーインフラ</strong>にわたる作品があります。",
-  about_p3:"すべてのプロジェクトにプレイヤーの視点で取り組みます：正しく感じられなければ、まだ完成していない。",
-  linkedin_btn:"LinkedIn プロフィール ↗",journey_label:"経歴",
-  tl1_year:"現在",tl1_role:"ゲーム開発者",tl2_year:"継続中",tl2_role:"オープンソースプロジェクト",tl2_place:"GitHub に 74+ リポジトリ",
-  tl3_year:"システム",tl3_role:"ゲームプレイアーキテクチャ",tl4_year:"学習中",tl4_role:"ソフトウェアエンジニアリング",tl4_place:"デザインパターン · クリーンコード · SOLID",
-  open_to:"新しい機会を探しています",contact_label:"連絡先",contact_title:"一緒に素晴らしいものを<br>作りましょう。",
-  contact_sub:"システムを深く考え、品質の高いコードを届けるゲーム開発者をお探しですか？",
-  footer_txt:"心を込めて構築。🕹️ で動作",
-  cv_label:"履歴書",cv_title:"CVをダウンロード",cv_sub:"学歴、職歴、技術スキルを含む完全な履歴書。",cv_btn:"CVをダウンロード",copy_btn:"コピー",
-  tl_ela:"インディーモバイルゲーム開発 · UI＆ゲームプレイプロトタイピング",
-  tl_arc_role:"開発者 @ ARC Savunma Yazılım",tl_arc_place:"防衛用シミュレーション・可視化ツール",
-  tl_edu_year:"学歴",tl_edu_role:"エーゲ大学 — コンピュータプログラミング",tl_edu_place:"学科トップで卒業 🏆"
-}
-};
-
-const LANG_META = {
-  en:{flag:'🇬🇧',code:'EN'}, tr:{flag:'🇹🇷',code:'TR'}, de:{flag:'🇩🇪',code:'DE'},
-  fr:{flag:'🇫🇷',code:'FR'}, es:{flag:'🇪🇸',code:'ES'}, zh:{flag:'🇨🇳',code:'ZH'}, ja:{flag:'🇯🇵',code:'JA'}
-};
-
-// Keys whose values contain HTML tags
-const HTML_KEYS = new Set(['about_p1','about_p2','about_p3','about_title','contact_title']);
-
-function toggleLang(e){ e.stopPropagation(); document.getElementById('langDrop').classList.toggle('open'); }
-document.addEventListener('click',()=>document.getElementById('langDrop').classList.remove('open'));
-
-function setLang(lang){
-  const t = T[lang]; if(!t) return;
-  const m = LANG_META[lang];
-  document.getElementById('curFlag').textContent = m.flag;
-  document.getElementById('curCode').textContent = m.code;
-  document.documentElement.lang = lang;
-
-  // checkmarks
-  Object.keys(LANG_META).forEach(l=>{
-    const el=document.getElementById('chk-'+l); if(el) el.textContent = l===lang?'✓':'';
-  });
-  document.querySelectorAll('.lang-option').forEach(btn=>{
-    btn.classList.toggle('active', btn.getAttribute('onclick').includes(`'${lang}'`));
-  });
-
-  // apply translations
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const k=el.getAttribute('data-i18n');
-    if(t[k]===undefined) return;
-    HTML_KEYS.has(k) ? (el.innerHTML=t[k]) : (el.textContent=t[k]);
-  });
-
-  document.getElementById('langDrop').classList.remove('open');
-}
-
-// ── COPY EMAIL ────────────────────────────────────────────────────────────────
-function copyEmail() {
-  navigator.clipboard.writeText('yilmazhalilibr@gmail.com').then(() => {
-    const btn = document.getElementById('copyEmailBtn');
-    const prev = btn.textContent;
-    btn.textContent = '✓ COPIED';
-    btn.style.color = 'var(--accent)';
-    btn.style.background = 'rgba(200,255,0,0.08)';
-    setTimeout(() => {
-      btn.textContent = prev;
-      btn.style.color = 'var(--muted)';
-      btn.style.background = 'transparent';
-    }, 2000);
-  });
-}
-
-// ── SCROLL REVEAL ─────────────────────────────────────────────────────────────
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),80); obs.unobserve(e.target); }
-  });
-},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-document.querySelectorAll('.skills-grid .skill-card,.projects-grid .project-card').forEach((el,i)=>{
-  el.style.transitionDelay=`${(i%3)*80}ms`;
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
