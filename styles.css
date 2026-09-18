@@ -119,6 +119,19 @@ a { color: inherit; }
 }
 .hero-media figcaption { margin-top: 10px; font-size: 11px; color: var(--text-3); }
 
+/* Featured media: main image + smaller secondary, subtle hover zoom */
+.featured-media { display: grid; grid-template-columns: 1fr 0.82fr; gap: 14px; align-items: end; }
+.featured-media img {
+  display: block; width: 100%; height: 100%; object-fit: cover;
+  border: 1px solid var(--line); border-radius: 10px;
+}
+.featured-media .fm-main { aspect-ratio: 16 / 10; }
+.featured-media .fm-sub { aspect-ratio: 4 / 5; }
+@media (hover:hover) {
+  .featured-media img { transition: transform 0.6s cubic-bezier(0.2, 0.6, 0.2, 1); }
+  .featured-media:hover img { transform: scale(1.03); }
+}
+
 /* ── Sections ───────────────────────────────────────────────────────── */
 
 .section { padding: 80px 0; }
@@ -204,14 +217,15 @@ a { color: inherit; }
 
 .cases-intro { font-size: 15.5px; color: var(--text-2); max-width: 62ch; margin: -16px 0 40px; }
 
+.cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
 .case {
-  display: grid; grid-template-columns: 220px 1fr; gap: 16px 48px;
-  padding: 36px 0; border-top: 1px solid var(--line);
+  padding: 30px 0; border-top: 1px solid var(--line);
 }
-.case:last-of-type { border-bottom: 1px solid var(--line); }
+.case:last-child, .case:nth-last-child(2):last-child { border-bottom: 1px solid var(--line); }
 
 .case-head h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
 .case-cat { font-size: 12.5px; color: var(--text-3); margin-top: 5px; }
+.case-head { margin-bottom: 14px; }
 
 .case-desc { font-size: 15px; color: var(--text-2); line-height: 1.7; max-width: 72ch; }
 .case-tech { font-size: 13px; color: var(--text-3); margin-top: 12px; }
@@ -290,6 +304,7 @@ a { color: inherit; }
   .hero { padding: 72px 0 64px; }
   .hero-grid { grid-template-columns: 1fr; gap: 44px; }
   .featured-body { grid-template-columns: 1fr; gap: 28px; }
+  .cases-grid { grid-template-columns: 1fr; gap: 0; }
   .case, .xp, .stack div, .contact-list li { grid-template-columns: 1fr; gap: 6px; }
   .case { padding: 30px 0; }
   .section { padding: 64px 0; }
@@ -307,6 +322,8 @@ a { color: inherit; }
   .hide-sm { display: none; }
   .hero h1 { font-size: 2rem; }
   .hero-bio { font-size: 15.5px; }
+  .featured-media { grid-template-columns: 1fr; }
+  .featured-media .fm-sub { display: none; }
   .title-list img { width: 100px; height: 47px; }
   .title-list a { gap: 14px; }
   .tl-meta { font-size: 12px; }
