@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0D0D0D">
+<meta name="theme-color" content="#100D0A">
 <script>
 /* Theme before first paint: saved choice, else the visitor's system setting, else dark. */
 (function () {
   var t; try { t = localStorage.getItem('theme'); } catch (e) {}
   if (t !== 'light' && t !== 'dark') t = (window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', t);
-  var m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = t === 'light' ? '#FAFAF8' : '#0D0D0D';
+  var m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = t === 'light' ? '#EDE1C3' : '#100D0A';
 })();
 </script>
 <title>Halil İbrahim YILMAZ | Gameplay Programmer</title>
@@ -46,16 +46,15 @@
   }
 })();
 </script>
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=3">
-<link rel="icon" href="assets/favicon.ico?v=3" sizes="any">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png?v=3">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=3">
-<link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png?v=3">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3">
-<link rel="manifest" href="manifest.webmanifest?v=3">
+<link rel="icon" href="assets/favicon.ico?v=4" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png?v=4">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=4">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png?v=4">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=4">
+<link rel="manifest" href="manifest.webmanifest?v=4">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script type="application/ld+json">
 {
@@ -88,7 +87,7 @@
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="#home"><img class="brand-mark" src="assets/favicon.svg?v=3" width="28" height="28" alt=""><span class="brand-full">Halil İbrahim YILMAZ</span><span class="brand-short">HIY.</span></a>
+    <a class="brand" href="#home"><img class="brand-mark" src="assets/icon-192.png?v=4" width="28" height="28" alt=""><span class="brand-full">Halil İbrahim YILMAZ</span><span class="brand-short">HIY.</span></a>
     <nav class="site-nav" aria-label="Main">
       <a href="#work" data-i18n="nav_work">Work</a>
       <a href="#m2server">MMORPG</a>

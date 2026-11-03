@@ -236,7 +236,7 @@
   var setTheme = function (t, save) {
     root.setAttribute('data-theme', t);
     if (themeBtn) themeBtn.setAttribute('aria-pressed', t === 'light' ? 'true' : 'false');
-    if (themeMeta) themeMeta.content = t === 'light' ? '#FAFAF8' : '#0D0D0D';
+    if (themeMeta) themeMeta.content = t === 'light' ? '#EDE1C3' : '#100D0A';
     if (save) { try { localStorage.setItem('theme', t); } catch (e) { /* private mode */ } }
   };
   if (themeBtn) themeBtn.setAttribute('aria-pressed', root.getAttribute('data-theme') === 'light' ? 'true' : 'false');

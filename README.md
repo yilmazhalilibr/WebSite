@@ -26,7 +26,8 @@ A static site in plain HTML, CSS and one vanilla JavaScript file. No build step,
 - **Feels like an app on phones.** Below 720 px a floating bottom tab bar (Home, Work, MMORPG, Experience, Contact) follows the scroll position, respects safe areas and gives a light haptic tick where supported.
 - **Makes contact easy.** Email, LinkedIn, GitHub and CV cards, plus a message composer that opens the visitor's own email app or Gmail with the message prepared. Nothing is sent to or stored on the site.
 - **Looks sharp on large screens.** The hero background plays the SpaceBourne 2 trailer, then the Illegal Mechanic Simulator teaser, then shuffled screenshots, then the trailers again. Trailers are served in 1080p (the highest Steam provides) with a lighter 960 px version for small screens. Stills have a 4K tier (AI upscaled with Real-ESRGAN from the 1080p originals) used when the screen has 2300 or more physical pixels. Hero parallax, staggered intro and reveal on scroll, all disabled for *reduced motion*. The native mouse cursor is used.
-- **Own icon.** An "HY" monogram (SVG plus PNG, ICO, Apple touch icon and web app manifest with a maskable icon), also used as the header mark.
+- **Own icon.** The mountain and orange doorway mark from my logo (PNG set, ICO, Apple touch icon and web app manifest with a maskable icon), also used as the header mark. The full logo is in `assets/logo.webp`.
+- **Medieval look.** Leather brown, aged gold and blood red (parchment and ink in the light theme), engraved serif type, framed panels and ornamental dividers.
 - **Dark and light theme.** Dark by default. A visitor whose system is set to light gets the light theme, the header toggle switches and remembers the choice. The hero (video) stays dark in both.
 - **SEO.** Per language title and description, Open Graph and Twitter tags, canonical URL and `schema.org/Person` JSON-LD.
 
