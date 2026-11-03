@@ -2,19 +2,48 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0D0D0D">
-<title>Halil İbrahim Yılmaz — Gameplay Programmer</title>
-<meta name="description" content="Gameplay programmer focused on Unreal Engine and C++. Worked on SpaceBourne 2 — gameplay systems, multiplayer networking and performance-sensitive game code.">
-<meta property="og:title" content="Halil İbrahim Yılmaz — Gameplay Programmer">
-<meta property="og:description" content="Gameplay programmer focused on Unreal Engine and C++. Worked on SpaceBourne 2.">
+<title>Halil İbrahim Yılmaz | Gameplay Programmer</title>
+<meta name="description" content="Gameplay programmer working with Unreal Engine 4 and 5 and C++. Worked on SpaceBourne 2 on Steam and develops a full-stack MMORPG server.">
+<meta property="og:title" content="Halil İbrahim Yılmaz | Gameplay Programmer">
+<meta property="og:description" content="Gameplay programmer working with Unreal Engine 4 and 5 and C++. Worked on SpaceBourne 2 on Steam.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1646850/280f8cb615d6b02c93f31e5fdd9c8b34b7b03348/ss_280f8cb615d6b02c93f31e5fdd9c8b34b7b03348.1920x1080.jpg?t=1763489632">
+<meta property="og:url" content="https://yilmazhalilibr.github.io/WebSite/">
+<meta property="og:image" content="https://yilmazhalilibr.github.io/WebSite/assets/sb2-poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://yilmazhalilibr.github.io/WebSite/">
+<script>
+/* Language by visitor: ?lang= > saved choice > browser language > English. The dictionary is loaded
+   before first paint so the page never flashes in English first. */
+(function () {
+  var L = ['en', 'de', 'fr', 'es', 'it', 'pt', 'nl', 'pl', 'sv', 'tr'], d = document.documentElement;
+  var l = (/[?&]lang=([a-z]{2})/.exec(location.search) || [])[1];
+  try { l = l || localStorage.getItem('lang'); } catch (e) {}
+  if (!l) {
+    var p = navigator.languages || [navigator.language || 'en'];
+    for (var i = 0; i < p.length && !l; i++) {
+      var c = String(p[i]).slice(0, 2).toLowerCase();
+      if (L.indexOf(c) >= 0) l = c;
+    }
+  }
+  if (L.indexOf(l) < 0) l = 'en';
+  window.__lang = l;
+  d.classList.add('js');
+  if (l !== 'en') {
+    d.classList.add('i18n-wait');
+    setTimeout(function () { d.classList.remove('i18n-wait'); }, 1500);
+    document.write('<script src="lang/' + l + '.js"><\/script>');
+  }
+})();
+</script>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
-<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -26,15 +55,17 @@
   "name": "Halil İbrahim Yılmaz",
   "alternateName": "yilmazhalilibr",
   "url": "https://yilmazhalilibr.github.io/WebSite/",
-  "jobTitle": "Gameplay / Systems Programmer",
-  "description": "Gameplay programmer focused on Unreal Engine and C++. Worked on SpaceBourne 2 — gameplay systems, multiplayer networking and performance-sensitive game code.",
+  "email": "yilmazhalilibr@gmail.com",
+  "jobTitle": "Gameplay and Systems Programmer",
+  "description": "Gameplay programmer working with Unreal Engine 4 and 5 and C++. Worked on SpaceBourne 2 on Steam and develops a full-stack MMORPG server.",
   "address": { "@type": "PostalAddress", "addressLocality": "İzmir", "addressCountry": "TR" },
   "sameAs": [
     "https://github.com/yilmazhalilibr",
     "https://www.linkedin.com/in/halil-ibrahim-yilmaz-7a4629209/",
     "https://store.steampowered.com/app/1646850/SpaceBourne_2/"
   ],
-  "knowsAbout": ["Unreal Engine","C++","Gameplay Systems","Multiplayer Networking","Dedicated Servers","Metin2 Private Server","Lua","MMORPG Server Development"],
+  "knowsAbout": ["Unreal Engine","C++","Gameplay Systems","Multiplayer Networking","Dedicated Servers","MMORPG M2 Server","Lua","Rust","C#","Python","PHP","FreeBSD","MMORPG Server Development"],
+  "knowsLanguage": ["tr", "en", "de"],
   "alumniOf": { "@type": "CollegeOrUniversity", "name": "Ege University" },
   "worksFor": [
     { "@type": "Organization", "name": "Velovis Games Studio" },
@@ -48,67 +79,132 @@
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="#top"><span class="brand-full">Halil İbrahim Yılmaz</span><span class="brand-short">HIY.</span></a>
+    <a class="brand" href="#home"><img class="brand-mark" src="assets/favicon.svg" width="28" height="28" alt=""><span class="brand-full">Halil İbrahim Yılmaz</span><span class="brand-short">HIY.</span></a>
     <nav class="site-nav" aria-label="Main">
       <a href="#work" data-i18n="nav_work">Work</a>
-      <a href="#projects" class="hide-sm" data-i18n="nav_projects">Case Studies</a>
-      <a href="#experience" class="hide-xs" data-i18n="nav_experience">Experience</a>
-      <a href="#about" class="hide-sm" data-i18n="nav_about">About</a>
-      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <a href="#m2server">MMORPG</a>
+      <a href="#ai">Local AI</a>
+      <a href="#projects" data-i18n="nav_projects">Projects</a>
+      <a href="#experience" data-i18n="nav_experience">Experience</a>
+      <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#contact" class="nav-cta" data-i18n="nav_contact">Contact</a>
     </nav>
-    <div class="lang-toggle" role="group" aria-label="Language">
-      <button type="button" data-lang="en" class="active">EN</button>
-      <span aria-hidden="true">/</span>
-      <button type="button" data-lang="tr">TR</button>
-    </div>
+    <label class="lang-select">
+      <span class="visually-hidden">Language</span>
+      <select id="lang-select" aria-label="Language">
+        <option value="en">English</option>
+        <option value="de">Deutsch</option>
+        <option value="fr">Français</option>
+        <option value="es">Español</option>
+        <option value="it">Italiano</option>
+        <option value="pt">Português</option>
+        <option value="nl">Nederlands</option>
+        <option value="pl">Polski</option>
+        <option value="sv">Svenska</option>
+        <option value="tr">Türkçe</option>
+      </select>
+    </label>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- ── HERO ─────────────────────────────────────────────────────────── -->
-  <section class="hero">
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <img class="bg-still" alt="" decoding="async">
+      <img class="bg-still" alt="" decoding="async">
+      <video id="hero-video" class="on" muted playsinline preload="none" poster="assets/sb2-poster.jpg"></video>
+    </div>
     <div class="container hero-grid">
       <div class="hero-text">
+        <p class="badge mono"><span class="dot" aria-hidden="true"></span><span data-i18n="hero_badge">Unreal Engine · Steam titles</span></p>
         <h1>Halil İbrahim Yılmaz</h1>
-        <p class="hero-role mono" data-i18n="hero_role">Gameplay / Systems Programmer</p>
-        <p class="hero-tech mono" data-i18n="hero_tech">Unreal Engine · C++ · Multiplayer</p>
-        <p class="hero-bio" data-i18n="hero_bio">Worked on <strong>SpaceBourne 2</strong>. I build gameplay systems, multiplayer architecture and performance-sensitive game code.</p>
+        <p class="hero-role mono" data-i18n="hero_role">Gameplay and Systems Programmer</p>
+        <p class="hero-bio" data-i18n="hero_bio">I build gameplay systems, quests and multiplayer features in Unreal Engine. I run <strong>MMORPG M2 Server</strong>, a released full-stack MMORPG. At game studios I worked on <strong>SpaceBourne 2</strong> (Unreal Engine 4) and <strong>Illegal Mechanic Simulator</strong> (Unreal Engine 5). I also set up and run local AI systems end to end.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#work" data-i18n="cta_work">View Work</a>
+          <a class="btn btn-primary" href="#contact" data-i18n="cta_contact">Get in touch</a>
+          <a class="btn" href="#work" data-i18n="cta_work">View work</a>
+          <a class="btn" href="Halil_Ibrahim_YILMAZ_CV.pdf" download data-i18n="cta_resume">Download CV</a>
           <a class="btn" href="https://github.com/yilmazhalilibr" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn" href="Halil_Ibrahim_YILMAZ_CV.pdf" download data-i18n="cta_resume">Resume</a>
         </div>
       </div>
-      <figure class="hero-media">
-        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1646850/280f8cb615d6b02c93f31e5fdd9c8b34b7b03348/ss_280f8cb615d6b02c93f31e5fdd9c8b34b7b03348.1920x1080.jpg?t=1763489632"
-             width="1920" height="1080" fetchpriority="high" decoding="async"
-             alt="SpaceBourne 2 — a capital ship in orbit above a planet (in-game screenshot)">
-        <figcaption class="mono">SpaceBourne 2 · Steam</figcaption>
-      </figure>
+      <aside class="snapshot" aria-labelledby="snap-head">
+        <h2 id="snap-head" class="snap-head mono" data-i18n="snap_head">At a glance</h2>
+        <dl>
+          <div><dt data-i18n="snap_stack_l">Core stack</dt><dd class="mono">Unreal Engine · C · C++ · Blueprints</dd></div>
+          <div><dt data-i18n="snap_exp_l">Experience</dt><dd data-i18n="snap_exp_v">Since 2020, freelance and studio work</dd></div>
+          <div><dt data-i18n="snap_loc_l">Based in</dt><dd data-i18n="snap_loc_v">İzmir, Türkiye · UTC+3</dd></div>
+          <div><dt data-i18n="snap_work_l">Work setup</dt><dd data-i18n="snap_work_v">On-site in İzmir, or remote with teams worldwide. International travel is no problem.</dd></div>
+        </dl>
+      </aside>
+    </div>
+    <div class="container hero-foot mono">
+      <span data-i18n="vid_credit">Background: SpaceBourne 2 and Illegal Mechanic Simulator · Steam</span>
+      <button type="button" id="vid-toggle" class="vid-toggle mono" hidden>Pause video</button>
     </div>
   </section>
 
-  <!-- ── SELECTED WORK ────────────────────────────────────────────────── -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track mono">
+      <span>Unreal Engine 4</span><span>Unreal Engine 5</span><span>C++</span><span>GAS</span><span>Replication</span><span>Dedicated Servers</span><span>MMORPG M2 Server</span><span>Local AI</span><span>Strata</span><span>llama.cpp</span><span>Hugging Face</span><span>Qwen</span><span>DeepSeek</span><span>Nanbeige</span><span>MCP</span><span>Lua</span><span>C#</span><span>Rust</span><span>Python</span><span>PHP</span><span>FreeBSD</span>
+      <span>Unreal Engine 4</span><span>Unreal Engine 5</span><span>C++</span><span>GAS</span><span>Replication</span><span>Dedicated Servers</span><span>MMORPG M2 Server</span><span>Local AI</span><span>Strata</span><span>llama.cpp</span><span>Hugging Face</span><span>Qwen</span><span>DeepSeek</span><span>Nanbeige</span><span>MCP</span><span>Lua</span><span>C#</span><span>Rust</span><span>Python</span><span>PHP</span><span>FreeBSD</span>
+    </div>
+  </div>
+
+  <!-- WHY WORK WITH ME -->
+  <section id="why" class="section">
+    <div class="container">
+      <h2 class="section-label mono" data-i18n="sec_why">Why work with me</h2>
+      <div class="why-grid">
+        <article>
+          <h3 data-i18n="why1_t">Credited on Steam titles</h3>
+          <p data-i18n="why1_d">At DBK Games I worked on SpaceBourne 2 (Unreal Engine 4), live on Steam: I designed new quests and quest chains and fixed bugs across all of its game systems.</p>
+        </article>
+        <article>
+          <h3 data-i18n="why2_t">Full-stack game engineering</h3>
+          <p data-i18n="why2_d">On the MMORPG M2 Server I work on the game server, client, launcher, website and deployment tooling, so problems get solved across every boundary.</p>
+        </article>
+        <article>
+          <h3 data-i18n="why3_t">Server-authoritative multiplayer</h3>
+          <p data-i18n="why3_d">Game logic that stays on the server, replication, and dedicated servers on AWS in my Unreal Engine prototypes.</p>
+        </article>
+        <article>
+          <h3 data-i18n="why4_t">Security and careful releases</h3>
+          <p data-i18n="why4_d">Anti-cheat development, server-side validation of game authority, signed releases, rollback plans and verified backups on a live server.</p>
+        </article>
+        <article>
+          <h3 data-i18n="why5_t">Systems others can build on</h3>
+          <p data-i18n="why5_d">Data-driven, modular C++: GAS abilities, an inventory framework and settings that designers can tune without a programmer.</p>
+        </article>
+        <article>
+          <h3 data-i18n="why6_t">Easy to evaluate</h3>
+          <p data-i18n="why6_d">Playable titles on Steam, code on GitHub, a portfolio in 10 languages and an ATS-friendly CV with plain text and standard headings.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK -->
   <section id="work" class="section">
     <div class="container">
-      <h2 class="section-label mono" data-i18n="sec_work">Selected Work</h2>
+      <h2 class="section-label mono" data-i18n="sec_work">Studio Work</h2>
 
       <article class="featured">
         <figure class="featured-media">
-          <img class="fm-main" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1646850/698686ceae7e4c4a62ace86067d8357656cdf722/ss_698686ceae7e4c4a62ace86067d8357656cdf722.1920x1080.jpg?t=1763489632"
+          <img class="fm-main" src="assets/projects/spacebourne2-2.jpg"
                width="1920" height="1080" loading="lazy" decoding="async"
-               alt="SpaceBourne 2 — in-game scene with a mech and soldiers">
-          <img class="fm-sub" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1646850/706c8ac872101e25af3ef3d9da2d03f8870c9cdc/ss_706c8ac872101e25af3ef3d9da2d03f8870c9cdc.1920x1080.jpg?t=1763489632"
+               alt="SpaceBourne 2: in-game scene with a mech and soldiers">
+          <img class="fm-sub" src="assets/projects/spacebourne2-3.jpg"
                width="1920" height="1080" loading="lazy" decoding="async"
-               alt="SpaceBourne 2 — two capital ships near a bright star">
+               alt="SpaceBourne 2: two capital ships near a bright star">
         </figure>
         <div class="featured-body">
           <div class="featured-info">
             <h3>SpaceBourne 2</h3>
-            <p class="featured-meta mono" data-i18n="sb2_meta">Gameplay / Systems Programming · DBK Games · 2023–2025</p>
+            <p class="featured-meta mono" data-i18n="sb2_meta">Gameplay and Systems Programming at DBK Games · 2023 to 2025</p>
             <dl class="facts">
-              <div><dt class="mono" data-i18n="sb2_engine_l">Engine</dt><dd class="mono">Unreal Engine 5</dd></div>
+              <div><dt class="mono" data-i18n="sb2_engine_l">Engine</dt><dd class="mono">Unreal Engine 4</dd></div>
               <div><dt class="mono" data-i18n="sb2_released_l">Released</dt><dd class="mono" data-i18n="sb2_released_v">Nov 2025 · Steam</dd></div>
             </dl>
             <a class="link-arrow" href="https://store.steampowered.com/app/1646850/SpaceBourne_2/" target="_blank" rel="noopener" data-i18n="sb2_link">View on Steam</a>
@@ -116,15 +212,15 @@
           <div class="contrib">
             <h4 class="mono" data-i18n="sb2_contrib_head">My contribution</h4>
             <ul>
-              <li data-i18n="sb2_c1">Built gameplay systems for SpaceBourne 2 (Steam, Mostly Positive)</li>
-              <li data-i18n="sb2_c2">Developed core mechanics: combat, inventory, UI and multiplayer networking</li>
-              <li data-i18n="sb2_c3">Active contributor to SpaceBourne 3 (in development)</li>
+              <li data-i18n="sb2_c1">Designed and built new quests and quest chains</li>
+              <li data-i18n="sb2_c2">Took ownership of bug fixing across all game systems</li>
+              <li data-i18n="sb2_c3">Active contributor to SpaceBourne 3, currently in development</li>
             </ul>
           </div>
         </div>
       </article>
 
-      <h3 class="subhead mono" data-i18n="also_head">Also on Steam</h3>
+      <h3 class="subhead mono" data-i18n="also_head">Other studio projects</h3>
       <ul class="title-list">
         <li>
           <a href="https://store.steampowered.com/app/4973030/Illegal_Mechanic_Simulator/" target="_blank" rel="noopener">
@@ -132,7 +228,7 @@
                  width="460" height="215" loading="lazy" decoding="async" alt="Illegal Mechanic Simulator cover art">
             <span>
               <span class="tl-name">Illegal Mechanic Simulator</span>
-              <span class="tl-meta" data-i18n="ims_meta">Velovis Games Studio · In development · Co-op repair-shop sim</span>
+              <span class="tl-meta" data-i18n="ims_meta">Velovis Games Studio · Unreal Engine 5 · In development · Co-op repair-shop sim</span>
             </span>
             <span class="tl-arrow" aria-hidden="true">↗</span>
           </a>
@@ -143,7 +239,7 @@
                  width="460" height="215" loading="lazy" decoding="async" alt="MvsM cover art">
             <span>
               <span class="tl-name">MvsM</span>
-              <span class="tl-meta" data-i18n="mvsm_meta">Mania Interactive · In development · Cartoon co-op PvE for 1–8 players</span>
+              <span class="tl-meta" data-i18n="mvsm_meta">Mania Interactive · In development · Cartoon co-op PvE for 1 to 8 players</span>
             </span>
             <span class="tl-arrow" aria-hidden="true">↗</span>
           </a>
@@ -154,7 +250,7 @@
                  width="460" height="215" loading="lazy" decoding="async" alt="Terminal Toilet Simulator cover art">
             <span>
               <span class="tl-name">Terminal Toilet Simulator</span>
-              <span class="tl-meta" data-i18n="tts_meta">Mania Interactive · In development · Absurdist restroom management sim</span>
+              <span class="tl-meta" data-i18n="tts_meta">Mania Interactive · In development · Absurdist restroom-management sim</span>
             </span>
             <span class="tl-arrow" aria-hidden="true">↗</span>
           </a>
@@ -163,20 +259,115 @@
     </div>
   </section>
 
-  <!-- ── TECHNICAL CASE STUDIES ───────────────────────────────────────── -->
+  <!-- FLAGSHIP PROJECT: MMORPG M2 SERVER -->
+  <section id="m2server" class="section">
+    <div class="container">
+      <h2 class="section-label mono" data-i18n="sec_m2">Flagship Project</h2>
+      <article class="m2">
+        <div class="featured-body">
+          <div class="featured-info">
+            <h3>MMORPG M2 Server</h3>
+            <p class="featured-meta mono" data-i18n="m2_meta">Server, client and tooling developer · 2025 to present</p>
+            <p class="m2-desc" data-i18n="m2_desc">A released MMORPG with an active player community. I work on it across the whole stack: game and database servers, quest scripting, client UI, a custom launcher and patcher with signed releases, the player website and the deployment tooling.</p>
+            <p class="m2-status"><span class="badge mono"><span class="dot" aria-hidden="true"></span><span data-i18n="m2_status">Released and actively played</span></span></p>
+            <p class="m2-cta"><a class="btn" href="mailto:yilmazhalilibr@gmail.com?subject=MMORPG%20M2%20Server%20test%20access" data-i18n="m2_cta">Request a test link</a></p>
+            <p class="composer-note" data-i18n="m2_cta_note">Test links are shared on request. Write to me and I will send them.</p>
+          </div>
+          <div class="contrib">
+            <h4 class="mono" data-i18n="sb2_contrib_head">My contribution</h4>
+            <ul>
+              <li data-i18n="m2_c1">Server-authoritative game systems and content in C++ and Lua quests</li>
+              <li data-i18n="m2_c2">Custom launcher and patcher with signed manifests, staged releases and rollback</li>
+              <li data-i18n="m2_c3">Player website, account flows and operations tooling for a live FreeBSD server</li>
+              <li data-i18n="m2_c4">Anti-cheat integration, protected game launch and security reviews of the website and server</li>
+            </ul>
+          </div>
+        </div>
+        <dl class="m2-tech">
+          <div><dt class="mono" data-i18n="m2_game_l">Game server</dt><dd class="mono">C++ · Lua quests · FreeBSD · MariaDB</dd></div>
+          <div><dt class="mono" data-i18n="m2_client_l">Client</dt><dd class="mono">C++ · DirectX 9/11 · Python UI scripts</dd></div>
+          <div><dt class="mono" data-i18n="m2_launcher_l">Launcher and patcher</dt><dd class="mono">C# · .NET WPF · Rust · SHA-256 · Cloudflare R2</dd></div>
+          <div><dt class="mono" data-i18n="m2_web_l">Website</dt><dd class="mono">PHP · JavaScript · CSS · nginx · php-fpm</dd></div>
+          <div><dt class="mono" data-i18n="m2_tools_l">Tooling and operations</dt><dd class="mono">PowerShell · Python · Bash · Cloudflare · VDS</dd></div>
+          <div><dt class="mono" data-i18n="m2_sec_l">Security</dt><dd class="mono">Anti-cheat (C# and C++) · Server-side validation · Signed manifests · Protected launch</dd></div>
+        </dl>
+      </article>
+    </div>
+  </section>
+
+  <!-- LOCAL AI -->
+  <section id="ai" class="section">
+    <div class="container">
+      <h2 class="section-label mono" data-i18n="sec_ai">Local AI</h2>
+      <article class="m2">
+        <div class="featured-body">
+          <div class="featured-info">
+            <h3 data-i18n="ai_title">Local AI Workstation</h3>
+            <p class="featured-meta mono" data-i18n="ai_meta">Setup, serving and daily use</p>
+            <p class="m2-desc" data-i18n="ai_desc">I install, tune, serve and use AI systems on my own hardware from start to finish: language models, image generation, 3D generation and agent tooling. The setup is used actively for coding assistance, automation and content pipelines.</p>
+          </div>
+          <div class="contrib">
+            <h4 class="mono" data-i18n="ai_head">What I do</h4>
+            <ul>
+              <li data-i18n="ai_c1">Run large open models locally, for example a 35-billion-parameter mixture-of-experts model at about 54 tokens per second using hybrid GPU and CPU offload</li>
+              <li data-i18n="ai_c2">Serve models through local OpenAI-compatible endpoints and connect coding agents and MCP tools to them</li>
+              <li data-i18n="ai_c3">Build AI-assisted Unreal Engine workflows with an editor bridge, reusable skills, a retrieval index and CI validation</li>
+              <li data-i18n="ai_c4">Run Strata, an open-source local inference engine, with custom setups for Qwen3.8-Flash-Next and DeepSeek V4.1-Flash, streaming the very large DeepSeek model from SSD</li>
+              <li data-i18n="ai_c5">Serve smaller models such as Nanbeige 4.2 3B through a custom OpenAI-compatible server built with Transformers and FastAPI</li>
+              <li data-i18n="ai_c6">Download, convert and verify models from Hugging Face, including GGUF quantizations and checksum checks</li>
+            </ul>
+          </div>
+        </div>
+        <dl class="m2-tech">
+          <div><dt class="mono" data-i18n="ai_models_l">Language models</dt><dd class="mono">Qwen 35B (A3B) · Qwen 27B · Qwen3.8 Flash Next · DeepSeek V4.1 Flash · Nanbeige 4.2 3B · Spark X2.5 4B</dd></div>
+          <div><dt class="mono" data-i18n="ai_serving_l">Serving</dt><dd class="mono">Strata · llama.cpp (CUDA) server · Unsloth Studio · Transformers with FastAPI · OpenAI-compatible local APIs</dd></div>
+          <div><dt class="mono" data-i18n="ai_agents_l">Agents and tools</dt><dd class="mono">OpenCode · MCP servers · RAG · Unreal Engine editor bridge · Blender MCP</dd></div>
+          <div><dt class="mono" data-i18n="ai_gen_l">Image and 3D</dt><dd class="mono">Image generation (Unsloth Studio) · Hunyuan3D 2.1 · TRELLIS.2 · Real-ESRGAN</dd></div>
+          <div><dt class="mono" data-i18n="ai_hub_l">Model hubs</dt><dd class="mono">Hugging Face · GGUF repositories · Transformers · quantization formats (IQ2, Q4_K_M, Q8_0)</dd></div>
+          <div><dt class="mono" data-i18n="ai_ops_l">Practice</dt><dd class="mono">Tokens per second benchmarks · checksum-verified models · PowerShell and Python automation</dd></div>
+        </dl>
+      </article>
+    </div>
+  </section>
+
+  <!-- PERSONAL PROJECTS -->
   <section id="projects" class="section">
     <div class="container">
-      <h2 class="section-label mono" data-i18n="sec_cases">Technical Case Studies</h2>
-      <p class="cases-intro" data-i18n="cases_intro">A few systems I've built — mostly gameplay, networking and tooling in Unreal Engine.</p>
+      <h2 class="section-label mono" data-i18n="sec_cases">Personal Projects</h2>
+      <p class="cases-intro" data-i18n="cases_intro">Prototypes and tools I build to explore systems in Unreal Engine. Public ones live on GitHub.</p>
       <div class="cases-grid">
 
       <article class="case">
         <div class="case-head">
-          <h3>Crunch</h3>
-          <p class="case-cat mono" data-i18n="case_cat_1">Multiplayer MOBA prototype</p>
+          <h3>Mitdrahk</h3>
+          <p class="case-cat mono" data-i18n="case_cat_1">First-person RPG, solo project</p>
         </div>
         <div class="case-body">
-          <p class="case-desc" data-i18n="case_d1">Multiplayer MOBA prototype on Unreal Engine 5.6. GAS-based abilities, in-game shop and inventory systems, and a dedicated-server backend running on AWS.</p>
+          <p class="case-desc" data-i18n="case_d1">First-person RPG that I develop on my own in Unreal Engine 5.8, written in C++. Server-authoritative damage, replicated vitals, progression stored on the player state and data-driven items.</p>
+          <p class="case-tech mono">Unreal Engine 5.8 · C++ · Replication · First-person RPG</p>
+          <p class="case-note mono" data-i18n="private_repo">Private repository</p>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-head">
+          <h3>Unreal AI Tooling</h3>
+          <p class="case-cat mono" data-i18n="case_cat_2">Developer tooling</p>
+        </div>
+        <div class="case-body">
+          <p class="case-desc" data-i18n="case_d2">Toolkit for AI-assisted Unreal Engine development: reusable skills, a WebSocket editor bridge plugin, a retrieval index and automated validation in CI.</p>
+          <p class="case-tech mono">Python · C++ plugin · WebSocket · GitHub Actions · RAG</p>
+          <p class="case-note mono" data-i18n="private_repo">Private repository</p>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-head">
+          <h3>Crunch</h3>
+          <p class="case-cat mono" data-i18n="case_cat_3">Multiplayer MOBA prototype</p>
+        </div>
+        <div class="case-body">
+          <p class="case-desc" data-i18n="case_d3">Multiplayer MOBA prototype on Unreal Engine 5.6 with GAS based abilities, an in-game shop and inventory, and a dedicated server backend on AWS.</p>
           <p class="case-tech mono">Unreal Engine 5.6 · C++ · GAS · Replication · Dedicated Server · AWS</p>
           <a class="link-arrow" href="https://github.com/yilmazhalilibr/Crunch" target="_blank" rel="noopener">GitHub</a>
         </div>
@@ -185,10 +376,10 @@
       <article class="case">
         <div class="case-head">
           <h3>Action Roguelike</h3>
-          <p class="case-cat mono" data-i18n="case_cat_2">Action roguelike prototype</p>
+          <p class="case-cat mono" data-i18n="case_cat_4">Action roguelike prototype</p>
         </div>
         <div class="case-body">
-          <p class="case-desc" data-i18n="case_d2">Third-person action roguelike: ability-based combat, procedural challenge loops and a data-driven progression system.</p>
+          <p class="case-desc" data-i18n="case_d4">Third-person action roguelike with ability based combat, procedural challenge loops and a data-driven progression system.</p>
           <p class="case-tech mono">Unreal Engine 5 · C++ · GAS · AI</p>
           <a class="link-arrow" href="https://github.com/yilmazhalilibr/Unreal_ActionRoguelike" target="_blank" rel="noopener">GitHub</a>
         </div>
@@ -197,10 +388,10 @@
       <article class="case">
         <div class="case-head">
           <h3>Fortnite-Style Builder</h3>
-          <p class="case-cat mono" data-i18n="case_cat_3">Building system</p>
+          <p class="case-cat mono" data-i18n="case_cat_5">Building system</p>
         </div>
         <div class="case-body">
-          <p class="case-desc" data-i18n="case_d3">Piece-by-piece building system with placement, editing and real-time destruction, inspired by Fortnite's construction mechanics.</p>
+          <p class="case-desc" data-i18n="case_d5">Building system with placement, editing and real-time destruction, inspired by the construction mechanics of Fortnite.</p>
           <p class="case-tech mono">Unreal Engine 5 · C++</p>
           <a class="link-arrow" href="https://github.com/yilmazhalilibr/Unreal_Building" target="_blank" rel="noopener">GitHub</a>
         </div>
@@ -209,10 +400,10 @@
       <article class="case">
         <div class="case-head">
           <h3>Inventory System</h3>
-          <p class="case-cat mono" data-i18n="case_cat_4">Core system</p>
+          <p class="case-cat mono" data-i18n="case_cat_6">Core system</p>
         </div>
         <div class="case-body">
-          <p class="case-desc" data-i18n="case_d4">Modular inventory framework for Unreal Engine: stacking, equipping, dropping and UI integration — built to be dropped into other projects.</p>
+          <p class="case-desc" data-i18n="case_d6">Modular inventory framework for Unreal Engine with stacking, equipping, dropping and UI integration, designed to be reused across projects.</p>
           <p class="case-tech mono">Unreal Engine 5 · C++ · UI</p>
           <a class="link-arrow" href="https://github.com/yilmazhalilibr/Unreal_Inventory" target="_blank" rel="noopener">GitHub</a>
         </div>
@@ -223,51 +414,58 @@
         <span class="mono" data-i18n="more_label">Also on GitHub:</span>
         <a href="https://github.com/yilmazhalilibr/Unreal_ManufactureRepo" target="_blank" rel="noopener" data-i18n="more_1">Manufacturing System</a>
         <span aria-hidden="true">·</span>
-        <a href="https://github.com/yilmazhalilibr/DesignPatterns" target="_blank" rel="noopener" data-i18n="more_2">Design Patterns C#</a>
+        <a href="https://github.com/yilmazhalilibr/DesignPatterns" target="_blank" rel="noopener" data-i18n="more_2">Design Patterns in C#</a>
         <span aria-hidden="true">·</span>
         <a href="https://github.com/yilmazhalilibr?tab=repositories" target="_blank" rel="noopener" data-i18n="more_all">All repositories</a>
       </p>
     </div>
   </section>
 
-  <!-- ── EXPERIENCE ───────────────────────────────────────────────────── -->
+  <!-- EXPERIENCE -->
   <section id="experience" class="section">
     <div class="container">
       <h2 class="section-label mono" data-i18n="sec_xp">Experience</h2>
       <ul class="xp-list">
         <li class="xp">
-          <p class="xp-when mono" data-i18n="xp1_when">Jul 2026 — Present</p>
+          <p class="xp-when mono" data-i18n="xp1_when">Jul 2026 to present</p>
           <div>
             <h3 class="xp-role"><span data-i18n="xp1_role">Unreal Engine Developer</span> <span class="org">· <span data-i18n="xp1_org">Velovis Games Studio</span></span></h3>
-            <p class="xp-desc" data-i18n="xp1_desc">Working on Illegal Mechanic Simulator — a co-op repair-shop sim, upcoming on Steam.</p>
+            <p class="xp-desc" data-i18n="xp1_desc">Illegal Mechanic Simulator on Unreal Engine 5: mini games, a vehicle population system, a runtime surface painting plugin, multiplayer, voice chat and UI, plus performance and security reviews.</p>
           </div>
         </li>
         <li class="xp">
-          <p class="xp-when mono" data-i18n="xp2_when">May 2025 — Present</p>
+          <p class="xp-when mono" data-i18n="xp2_when">May 2025 to present</p>
           <div>
-            <h3 class="xp-role"><span data-i18n="xp2_role">MMORPG Server Developer (Freelance)</span> <span class="org">· <span data-i18n="xp2_org">M2 Private Server</span></span></h3>
-            <p class="xp-desc" data-i18n="xp2_desc">Metin2 private server: game systems, content and tooling in Lua and C.</p>
+            <h3 class="xp-role"><span data-i18n="xp2_role">MMORPG Server Developer (Freelance)</span> <span class="org">· <span data-i18n="xp2_org">MMORPG M2 Server</span></span></h3>
+            <p class="xp-desc" data-i18n="xp2_desc">Released MMORPG with an active player community. Game systems, client, launcher and tooling in C++, Lua, C#, Rust and Python.</p>
           </div>
         </li>
         <li class="xp">
-          <p class="xp-when mono" data-i18n="xp3_when">Jun 2025 — Sep 2026</p>
+          <p class="xp-when mono" data-i18n="xp3_when">Jun 2025 to Sep 2026</p>
           <div>
-            <h3 class="xp-role"><span data-i18n="xp3_role">Unreal Engine Developer</span> <span class="org">· <span data-i18n="xp3_org">Mania Interactive — independent studio</span></span></h3>
-            <p class="xp-desc" data-i18n="xp3_desc">MvsM and Terminal Toilet Simulator — both in development on Steam.</p>
+            <h3 class="xp-role"><span data-i18n="xp3_role">Unreal Engine Developer</span> <span class="org">· <span data-i18n="xp3_org">Mania Interactive, independent studio</span></span></h3>
+            <p class="xp-desc" data-i18n="xp3_desc">MvsM and Terminal Toilet Simulator, both in development on Steam.</p>
           </div>
         </li>
         <li class="xp">
-          <p class="xp-when mono" data-i18n="xp4_when">Nov 2023 — May 2025</p>
+          <p class="xp-when mono" data-i18n="xp4_when">Nov 2023 to May 2025</p>
           <div>
             <h3 class="xp-role"><span data-i18n="xp4_role">Unreal Engine Developer</span> <span class="org">· <span data-i18n="xp4_org">DBK Games</span></span></h3>
-            <p class="xp-desc" data-i18n="xp4_desc">SpaceBourne 2 (released 2025) and SpaceBourne 3.</p>
+            <p class="xp-desc" data-i18n="xp4_desc">SpaceBourne 2 (Unreal Engine 4, released 2025) and SpaceBourne 3: new quests and quest chains, and bug fixing across all systems.</p>
           </div>
         </li>
         <li class="xp">
           <p class="xp-when mono">2022</p>
           <div>
             <h3 class="xp-role"><span data-i18n="xp5_role">Unity Developer</span> <span class="org">· <span data-i18n="xp5_org">ELA Game Studio</span></span></h3>
-            <p class="xp-desc" data-i18n="xp5_desc">Internship to full-time. Mobile game development, gameplay prototyping and UI.</p>
+            <p class="xp-desc" data-i18n="xp5_desc">Internship, then full time. Mobile game development, gameplay prototyping and UI.</p>
+          </div>
+        </li>
+        <li class="xp">
+          <p class="xp-when mono" data-i18n="xp7_when">2020 to 2022</p>
+          <div>
+            <h3 class="xp-role"><span data-i18n="xp7_role">Unreal Engine Developer (Freelance)</span> <span class="org">· <span data-i18n="xp7_org">Project-based, confidential projects</span></span></h3>
+            <p class="xp-desc" data-i18n="xp7_desc">Built Unreal Engine solutions for defense industry clients to their specific requirements. All projects are confidential.</p>
           </div>
         </li>
         <li class="xp">
@@ -280,7 +478,7 @@
         <li class="xp">
           <p class="xp-when mono" data-i18n="xp_edu_when">Education</p>
           <div>
-            <h3 class="xp-role"><span data-i18n="xp_edu_role">Ege University — Computer Programming</span></h3>
+            <h3 class="xp-role"><span data-i18n="xp_edu_role">Ege University, Computer Programming</span></h3>
             <p class="xp-desc" data-i18n="xp_edu_desc">Graduated top of the department.</p>
           </div>
         </li>
@@ -288,60 +486,90 @@
     </div>
   </section>
 
-  <!-- ── TECHNICAL STACK ──────────────────────────────────────────────── -->
+  <!-- TECHNICAL STACK -->
   <section id="stack" class="section">
     <div class="container">
       <h2 class="section-label mono" data-i18n="sec_stack">Technical Stack</h2>
       <dl class="stack">
-        <div><dt data-i18n="stack_lang">Languages</dt><dd class="mono">C++ · C# · Lua</dd></div>
-        <div><dt data-i18n="stack_engine">Engine</dt><dd class="mono">Unreal Engine 5</dd></div>
-        <div><dt data-i18n="stack_gameplay">Gameplay</dt><dd class="mono">GAS · AI · Inventory · Combat · Ability Systems</dd></div>
-        <div><dt data-i18n="stack_net">Networking</dt><dd class="mono">Replication · Dedicated Servers · Server-authoritative systems</dd></div>
-        <div><dt data-i18n="stack_mmo">MMO Server</dt><dd class="mono">Metin2 private server · TCP · Lua · C</dd></div>
+        <div><dt data-i18n="stack_lang">Languages</dt><dd class="mono">C++ · C# · Lua · Python · Rust · PHP · JavaScript · SQL · PowerShell · Bash</dd></div>
+        <div><dt data-i18n="stack_engine">Engine</dt><dd class="mono">Unreal Engine 5 · Unreal Engine 4 · Unity · Blueprints</dd></div>
+        <div><dt data-i18n="stack_gameplay">Gameplay</dt><dd class="mono">GAS · AI · Inventory · Combat · Ability Systems · SOLID</dd></div>
+        <div><dt data-i18n="stack_net">Networking</dt><dd class="mono">Replication · Dedicated Servers · Server-authoritative systems · TCP</dd></div>
+        <div><dt data-i18n="stack_mmo">MMO Server</dt><dd class="mono">MMORPG M2 Server · C++ · Lua quests · FreeBSD</dd></div>
+        <div><dt data-i18n="stack_client">Client and Launcher</dt><dd class="mono">C++ · DirectX 9/11 · Python UI · C# .NET WPF · Rust patcher</dd></div>
         <div><dt data-i18n="stack_db">Databases</dt><dd class="mono">MySQL · MariaDB · Redis</dd></div>
         <div><dt data-i18n="stack_backend">Backend</dt><dd class="mono">AWS · FastAPI · PHP</dd></div>
-        <div><dt data-i18n="stack_infra">Infra</dt><dd class="mono">nginx · Cloudflare · FreeBSD</dd></div>
-        <div><dt data-i18n="stack_tools">Tools</dt><dd class="mono">Git · GitHub</dd></div>
+        <div><dt data-i18n="stack_infra">Infra</dt><dd class="mono">nginx · php-fpm · Cloudflare · Cloudflare R2 · FreeBSD · VirtualBox</dd></div>
+        <div><dt data-i18n="stack_tools">Tools</dt><dd class="mono">Git · GitHub · SourceTree · Visual Studio · PowerShell automation</dd></div>
+        <div><dt data-i18n="stack_security">Security</dt><dd class="mono">Anti-cheat · Server-side validation · Signed releases (SHA-256) · Security reviews</dd></div>
+        <div><dt data-i18n="stack_ai">Local AI</dt><dd class="mono">Strata · llama.cpp · Hugging Face · GGUF · Qwen · DeepSeek · Nanbeige · MCP · RAG · Unsloth Studio</dd></div>
       </dl>
     </div>
   </section>
 
-  <!-- ── ABOUT ────────────────────────────────────────────────────────── -->
+  <!-- ABOUT -->
   <section id="about" class="section">
     <div class="container">
       <h2 class="section-label mono" data-i18n="sec_about">About</h2>
       <div class="about">
-        <p data-i18n="about_p1">I'm a gameplay programmer based in İzmir, Turkey. I work mostly in Unreal Engine and C++ — gameplay systems, multiplayer networking and the performance-sensitive parts of game code.</p>
-        <p data-i18n="about_p2">I've been working in games since 2022: Unity mobile projects first, then commercial Unreal Engine titles. I studied Computer Programming at Ege University and graduated top of the department.</p>
-        <p data-i18n="about_p3">Outside of studio work I run a Metin2 private server project (Lua / C) and keep a set of open-source Unreal Engine systems on GitHub.</p>
+        <p data-i18n="about_p1">I am a gameplay programmer based in İzmir, Türkiye. I work mostly in Unreal Engine and C++ on gameplay systems, multiplayer networking and the performance-sensitive parts of game code.</p>
+        <p data-i18n="about_p2">I have worked professionally since 2020: freelance project work first, building Unreal Engine solutions to the requirements of defense industry clients (all of it confidential), then Unity mobile projects and commercial Unreal Engine titles. I studied Computer Programming at Ege University and graduated top of the department.</p>
+        <p data-i18n="about_p3">Outside studio work I develop an MMORPG M2 Server project in C++ and Lua and maintain a set of open-source Unreal Engine systems on GitHub.</p>
+        <p data-i18n="about_p4">I also set up and run AI systems locally, from model selection and quantization to serving, benchmarking and agent integration.</p>
       </div>
     </div>
   </section>
 
-  <!-- ── CONTACT ──────────────────────────────────────────────────────── -->
+  <!-- CONTACT -->
   <section id="contact" class="section">
     <div class="container">
       <h2 class="section-label mono" data-i18n="sec_contact">Contact</h2>
-      <p class="contact-intro" data-i18n="contact_intro">I'm open to gameplay programming / Unreal Engine opportunities.</p>
-      <ul class="contact-list">
-        <li>
-          <span class="lbl mono" data-i18n="contact_email">Email</span>
-          <span class="val"><a href="mailto:yilmazhalilibr@gmail.com">yilmazhalilibr@gmail.com</a>
-            <button type="button" id="copy-email" class="copy-btn mono" data-i18n="copy_btn">Copy</button></span>
-        </li>
-        <li>
-          <span class="lbl mono">GitHub</span>
-          <span class="val"><a href="https://github.com/yilmazhalilibr" target="_blank" rel="noopener">yilmazhalilibr</a></span>
-        </li>
-        <li>
-          <span class="lbl mono">LinkedIn</span>
-          <span class="val"><a href="https://www.linkedin.com/in/halil-ibrahim-yilmaz-7a4629209/" target="_blank" rel="noopener">halil-ibrahim-yilmaz</a></span>
-        </li>
-        <li>
-          <span class="lbl mono" data-i18n="contact_resume">Resume</span>
-          <span class="val"><a href="Halil_Ibrahim_YILMAZ_CV.pdf" download data-i18n="resume_val">PDF · Download</a></span>
-        </li>
-      </ul>
+      <p class="contact-intro" data-i18n="contact_intro">Questions, collaborations or projects: write to me directly or find me on the platforms below.</p>
+
+      <div class="contact-grid">
+        <a class="c-card" href="mailto:yilmazhalilibr@gmail.com">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <span class="c-label mono" data-i18n="contact_email">Email</span>
+          <span class="c-value">yilmazhalilibr@gmail.com</span>
+          <span class="c-hint" data-i18n="c_mail_hint">Write an email</span>
+        </a>
+        <a class="c-card" href="https://www.linkedin.com/in/halil-ibrahim-yilmaz-7a4629209/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-5m0 2.5c0-1.5 1-2.5 2.5-2.5S17 12 17 13.5V16"/></svg>
+          <span class="c-label mono">LinkedIn</span>
+          <span class="c-value">halil-ibrahim-yilmaz</span>
+          <span class="c-hint" data-i18n="c_li_hint">View profile</span>
+        </a>
+        <a class="c-card" href="https://github.com/yilmazhalilibr" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg>
+          <span class="c-label mono">GitHub</span>
+          <span class="c-value">yilmazhalilibr</span>
+          <span class="c-hint" data-i18n="c_gh_hint">View repositories</span>
+        </a>
+        <a class="c-card" href="Halil_Ibrahim_YILMAZ_CV.pdf" download>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg>
+          <span class="c-label mono" data-i18n="contact_resume">CV</span>
+          <span class="c-value" data-i18n="cv_value">PDF, ATS-friendly</span>
+          <span class="c-hint" data-i18n="c_cv_hint">Download</span>
+        </a>
+      </div>
+
+      <form class="composer" id="composer" novalidate>
+        <h3 class="composer-head mono" data-i18n="form_head">Send a message</h3>
+        <div class="composer-row">
+          <label><span data-i18n="f_name">Your name</span><input type="text" id="f-name" autocomplete="name"></label>
+          <label><span data-i18n="f_subject">Subject</span><input type="text" id="f-subject" autocomplete="off"></label>
+        </div>
+        <label><span data-i18n="f_msg">Message</span><textarea id="f-msg" rows="5"></textarea></label>
+        <div class="composer-actions">
+          <button type="submit" class="btn btn-primary" data-i18n="f_mail">Open in email app</button>
+          <button type="button" class="btn" id="f-gmail" data-i18n="f_gmail">Open in Gmail</button>
+          <button type="button" class="btn" id="copy-email" data-i18n="copy_btn">Copy address</button>
+        </div>
+        <p class="composer-note" id="f-note" data-i18n="f_note">Your email app opens with the message prepared. Nothing is stored on this site.</p>
+      </form>
+
+      <p class="contact-work" data-i18n="contact_work">Based in İzmir, Türkiye. I work on-site locally and remotely with teams worldwide, and international travel is no problem.</p>
+      <p class="contact-lang mono"><span data-i18n="contact_lang_l">Languages</span>: <span data-i18n="contact_lang_v">Turkish (native), English (B1+), German (A1)</span></p>
     </div>
   </section>
 
@@ -353,6 +581,29 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<nav class="tabbar" aria-label="Quick navigation">
+  <a href="#home" class="tab">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>
+    <span data-i18n="nav_home">Home</span>
+  </a>
+  <a href="#work" class="tab">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+    <span data-i18n="nav_work">Work</span>
+  </a>
+  <a href="#m2server" class="tab">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg>
+    <span>MMORPG</span>
+  </a>
+  <a href="#experience" class="tab">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4h6v3M3 13h18"/></svg>
+    <span data-i18n="nav_experience">Experience</span>
+  </a>
+  <a href="#contact" class="tab">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+    <span data-i18n="nav_contact">Contact</span>
+  </a>
+</nav>
+
+<script src="script.js" defer></script>
 </body>
 </html>

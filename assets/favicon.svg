@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="HIY">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1f0c"/>
+      <stop offset="1" stop-color="#090909"/>
+    </linearGradient>
+    <linearGradient id="lime" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6ff6a"/>
+      <stop offset="1" stop-color="#b8f000"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.3" cy="0.2" r="0.9">
+      <stop offset="0" stop-color="#c8ff00" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#c8ff00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect width="512" height="512" rx="112" fill="url(#glow)"/>
+  <rect x="9" y="9" width="494" height="494" rx="103" fill="none" stroke="#c8ff00" stroke-opacity="0.3" stroke-width="4"/>
+  <polygon fill="url(#lime)" points="118,150 140,128 188,128 188,230 260,230 260,128 308,128 330,150 330,384 260,384 260,298 188,298 188,384 118,384"/>
+  <circle cx="376" cy="364" r="21" fill="url(#lime)"/>
+</svg>

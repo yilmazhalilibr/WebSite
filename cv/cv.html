@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Halil İbrahim Yılmaz - CV - Gameplay and Systems Programmer</title>
+<meta name="author" content="Halil İbrahim Yılmaz">
+<meta name="description" content="CV of Halil İbrahim Yılmaz, Gameplay and Systems Programmer (Unreal Engine 4 and 5, C++, local AI).">
+<style>
+/* ATS-friendly by design: one column, real text, system font, no tables, icons, images or text boxes,
+   standard section headings, contact details in the body, consistent "Mon YYYY - Mon YYYY" dates. */
+@page { size: A4; margin: 14mm 17mm 13mm; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, Helvetica, sans-serif; font-size: 9.8pt; line-height: 1.42; color: #1a1a1a; }
+header { padding-bottom: 7px; border-bottom: 2.2px solid #0b2a4a; }
+h1 { font-size: 24pt; line-height: 1.05; font-weight: 700; color: #0b2a4a; }
+.title { margin-top: 5px; font-size: 11.5pt; font-weight: 700; color: #1d6b3a; }
+.contact { margin-top: 5px; font-size: 9pt; color: #333; line-height: 1.5; }
+h2 {
+  margin-top: 13px; padding-bottom: 2px; border-bottom: 0.8px solid #9aa7b5;
+  font-size: 10.2pt; font-weight: 700; text-transform: uppercase; color: #0b2a4a;
+}
+p, li { margin-top: 3px; }
+.skills p { margin-top: 2.5px; }
+.skills b { color: #0b2a4a; }
+.job { margin-top: 9px; font-weight: 700; color: #111; }
+.job .co { color: #0b2a4a; }
+.job .when { font-weight: 400; color: #444; }
+ul { margin-top: 1px; padding-left: 15px; }
+li { padding-left: 1px; }
+.proj b { color: #0b2a4a; }
+a { color: inherit; text-decoration: none; }
+.job, h2 { break-after: avoid; }
+li { break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<header>
+<h1>Halil İbrahim Yılmaz</h1>
+<p class="title">Gameplay and Systems Programmer | Unreal Engine 4 and 5 | C++ | Local AI</p>
+<p class="contact">İzmir, Türkiye (on-site) | Remote worldwide | yilmazhalilibr@gmail.com<br>
+<a href="https://www.linkedin.com/in/halil-ibrahim-yilmaz-7a4629209/">linkedin.com/in/halil-ibrahim-yilmaz-7a4629209</a> | <a href="https://github.com/yilmazhalilibr">github.com/yilmazhalilibr</a> | <a href="https://yilmazhalilibr.github.io/WebSite/">yilmazhalilibr.github.io/WebSite</a></p>
+</header>
+
+<h2>Professional Summary</h2>
+<p>Gameplay and systems programmer with six years of professional experience (since 2020) in Unreal Engine 4 and 5 and C++. Contributed to SpaceBourne 2 at DBK Games (live on Steam, more than 5,000 user reviews) and work on a released, actively played full-stack MMORPG server covering the game server, client, launcher, website, anti-cheat integration and deployment tooling. Built confidential Unreal Engine solutions for defense industry clients. Set up and operate local AI systems end to end, running large open models such as Qwen 35B and 27B and DeepSeek V4.1 Flash. Based in İzmir, Türkiye; work on-site locally and remotely with teams worldwide.</p>
+
+<h2>Skills</h2>
+<div class="skills">
+<p><b>Game Engines:</b> Unreal Engine 5, Unreal Engine 4, Unity, Blueprints</p>
+<p><b>Programming Languages:</b> C, C++, C#, Lua, Python, Rust, PHP, JavaScript, SQL, PowerShell, Bash</p>
+<p><b>Gameplay Systems:</b> Gameplay Ability System (GAS), quest and quest chain design, combat, AI, inventory, UI, progression, data-driven design</p>
+<p><b>Multiplayer and Networking:</b> Replication, RPCs, dedicated servers, server-authoritative gameplay, TCP, Amazon Web Services (AWS)</p>
+<p><b>Server and Backend:</b> MMORPG server development, MySQL, MariaDB, Redis, FastAPI, nginx, FreeBSD, Cloudflare</p>
+<p><b>Security:</b> Anti-cheat development (C# and C++), server-side validation of game authority, signed release manifests (SHA-256), security and vulnerability reviews</p>
+<p><b>AI and Local LLMs:</b> Strata, llama.cpp (CUDA), Hugging Face, Transformers, GGUF quantization, Qwen, DeepSeek, Nanbeige, OpenAI-compatible local APIs, Model Context Protocol (MCP), retrieval-augmented generation (RAG), AI-assisted development workflows, FastAPI, Unsloth Studio, local image and 3D generation, Real-ESRGAN</p>
+<p><b>Tools and Practices:</b> Git, GitHub, SourceTree, Visual Studio, GitHub Actions (CI), SOLID principles, design patterns, performance optimization, release management and rollback</p>
+</div>
+
+<h2>Professional Experience</h2>
+
+<p class="job">Unreal Engine Developer | <span class="co">Velovis Games Studio</span> | <span class="when">Jul 2026 - Present</span></p>
+<ul>
+<li>Develop gameplay and multiplayer features for Illegal Mechanic Simulator, a co-op repair-shop simulation built in Unreal Engine 5 (in development on Steam).</li>
+<li>Built mini game systems, a vehicle population system and a runtime surface painting plugin in C++.</li>
+<li>Integrated voice chat, game UI and emote UI, and refactored shared systems to keep them maintainable.</li>
+<li>Carried out performance optimization and security and vulnerability analysis of game systems.</li>
+</ul>
+
+<p class="job">MMORPG Server Developer (Freelance) | <span class="co">MMORPG M2 Server</span> | <span class="when">May 2025 - Present</span></p>
+<ul>
+<li>Develop game systems and content for a released MMORPG with an active player community, in C++ and Lua quest scripts, with all game authority kept on the server.</li>
+<li>Built a custom launcher (C#, .NET WPF) and patcher (Rust) with SHA-256 signed manifests, staged releases and rollback.</li>
+<li>Maintain the client (C++, DirectX 9 and 11, Python UI scripts), the player website (PHP, JavaScript, nginx) and operations tooling (PowerShell, Python, Bash) on FreeBSD.</li>
+<li>Apply backup, restore and rollback procedures to database and release changes on the live server.</li>
+<li>Work on anti-cheat integration (C# and C++), a protected game launch flow and security reviews of the website and server configuration.</li>
+</ul>
+
+<p class="job">Unreal Engine Developer | <span class="co">Mania Interactive</span> | <span class="when">Jun 2025 - Sep 2026</span></p>
+<ul>
+<li>Developed gameplay for MvsM (cartoon co-op PvE for 1 to 8 players) and Terminal Toilet Simulator, both in development on Steam.</li>
+</ul>
+
+<p class="job">Unreal Engine Developer | <span class="co">DBK Games</span> | <span class="when">Nov 2023 - May 2025</span></p>
+<ul>
+<li>Designed and implemented new quests and quest chains for SpaceBourne 2 (Unreal Engine 4), released by DBK Games on Steam in Nov 2025 (more than 5,000 user reviews).</li>
+<li>Took ownership of bug fixing across all game systems.</li>
+<li>Contributed to SpaceBourne 3 (in development).</li>
+</ul>
+
+<p class="job">Unity Developer | <span class="co">ELA Game Studio</span> | <span class="when">2022</span></p>
+<ul>
+<li>Developed mobile games in Unity (C#), including gameplay prototypes and UI, as an intern and then full time.</li>
+</ul>
+
+<p class="job">Unreal Engine Developer (Freelance) | <span class="co">Confidential defense industry clients</span> | <span class="when">2020 - 2022</span></p>
+<ul>
+<li>Built Unreal Engine solutions for defense industry clients to their specific requirements. All projects are confidential.</li>
+</ul>
+
+<p class="job">Developer | <span class="co">ARC Savunma Yazılım</span> | <span class="when">3-month project</span></p>
+<ul>
+<li>Built simulation and visualization tools for defense applications in C++ under university mentorship.</li>
+</ul>
+
+<h2>Projects</h2>
+<ul class="proj">
+<li><b>Local AI Workstation</b> (Strata, llama.cpp CUDA, Hugging Face, GGUF, MCP): runs Qwen 35B (Qwen3.6-35B-A3B, Q4_K_M, about 54 tokens per second), Qwen 27B, DeepSeek V4.1-Flash, Qwen3.8-Flash-Next and Nanbeige 4.2 3B using hybrid GPU and CPU offload and SSD streaming for very large models. Downloads, converts and checksum-verifies models from Hugging Face, runs Strata (open-source inference engine) with custom setups, serves Nanbeige through a custom Transformers and FastAPI endpoint, and exposes models through OpenAI-compatible local endpoints to coding agents and MCP tools. Also runs image and 3D generation locally.</li>
+<li><b>Mitdrahk</b> (Unreal Engine 5.8, C++): first-person RPG developed solo, with server-authoritative damage, replicated vitals, progression stored on the player state and data-driven items. Private repository.</li>
+<li><b>Unreal AI Tooling</b> (Python, C++, WebSocket, GitHub Actions): toolkit for AI-assisted Unreal Engine development with reusable skills, an editor bridge plugin, a retrieval index and CI validation. Private repository.</li>
+<li><b>Crunch</b> (Unreal Engine 5.6, C++, GAS, AWS): multiplayer MOBA prototype with GAS abilities, an in-game shop and inventory, and a dedicated server backend on AWS. github.com/yilmazhalilibr/Crunch</li>
+<li><b>Action Roguelike</b> (Unreal Engine 5, C++, GAS, AI): ability-based combat, procedural challenge loops and data-driven progression. github.com/yilmazhalilibr/Unreal_ActionRoguelike</li>
+<li><b>Fortnite-Style Builder</b> (Unreal Engine 5, C++): building system with placement, editing and real-time destruction. github.com/yilmazhalilibr/Unreal_Building</li>
+<li><b>Inventory System</b> (Unreal Engine 5, C++): modular inventory framework with stacking, equipping, dropping and UI integration. github.com/yilmazhalilibr/Unreal_Inventory</li>
+<li><b>Manufacturing System</b> (Unreal Engine 5, C++): resource pipelines and factory automation. github.com/yilmazhalilibr/Unreal_ManufactureRepo</li>
+<li><b>Design Patterns in C#</b>: SOLID principles and creational, structural and behavioral patterns. github.com/yilmazhalilibr/DesignPatterns</li>
+</ul>
+
+<h2>Education</h2>
+<p class="job">Computer Programming | <span class="co">Ege University</span></p>
+<p>Graduated top of the department.</p>
+
+<h2>Languages</h2>
+<p>Turkish (native), English (B1+), German (A1)</p>
+
+</body>
+</html>

@@ -1,168 +1,280 @@
-/* EN/TR language toggle + email copy. No dependencies. */
+/* i18n (10 languages, picked before first paint), hero media, scroll and pointer effects, mobile tab bar,
+   contact composer. No dependencies. */
 (function () {
   'use strict';
 
   var EMAIL = 'yilmazhalilibr@gmail.com';
-
-  var TR = {
-    title: 'Halil İbrahim Yılmaz — Gameplay Programcısı',
-    desc: 'Unreal Engine ve C++ odaklı gameplay programcısı. SpaceBourne 2 üzerinde çalıştım — gameplay sistemleri, multiplayer networking ve performans kritik oyun kodu.',
-
-    nav_work: 'Çalışmalar',
-    nav_projects: 'İncelemeler',
-    nav_experience: 'Deneyim',
-    nav_about: 'Hakkımda',
-    nav_contact: 'İletişim',
-
-    hero_role: 'Gameplay / Sistem Programcısı',
-    hero_tech: 'Unreal Engine · C++ · Multiplayer',
-    hero_bio: '<strong>SpaceBourne 2</strong> üzerinde çalıştım. Gameplay sistemleri, multiplayer mimarisi ve performans kritik oyun kodu geliştiriyorum.',
-    cta_work: 'Çalışmaları Gör',
-    cta_resume: 'Özgeçmiş',
-
-    sec_work: 'Öne Çıkan İşler',
-    sb2_meta: 'Gameplay / Sistem Programlama · DBK Games · 2023–2025',
-    sb2_engine_l: 'Motor',
-    sb2_released_l: 'Çıkış',
-    sb2_released_v: 'Kas 2025 · Steam',
-    sb2_link: "Steam'de Gör",
-    sb2_contrib_head: 'Katkım',
-    sb2_c1: 'SpaceBourne 2 için gameplay sistemleri geliştirdim (Steam, Mostly Positive)',
-    sb2_c2: 'Temel mekanikler: combat, envanter, UI ve multiplayer networking',
-    sb2_c3: "SpaceBourne 3'e aktif katkı (geliştirme aşamasında)",
-
-    also_head: "Steam'de ayrıca",
-    ims_meta: 'Velovis Games Studio · Geliştirmede · Co-op tamirci simülasyonu',
-    mvsm_meta: 'Mania Interactive · Geliştirmede · 1–8 oyuncu için çizgi film tarzı co-op PvE',
-    tts_meta: 'Mania Interactive · Geliştirmede · Absürt tuvalet işletme simülasyonu',
-
-    sec_cases: 'Teknik İncelemeler',
-    cases_intro: "Geliştirdiğim sistemlerden bir seçki — çoğunlukla Unreal Engine'de gameplay, networking ve araçlar.",
-    case_cat_1: 'Multiplayer MOBA prototipi',
-    case_d1: 'Unreal Engine 5.6 üzerinde multiplayer MOBA prototipi. GAS tabanlı yetenekler, oyun içi mağaza ve envanter sistemleri, AWS üzerinde çalışan dedicated server altyapısı.',
-    case_cat_2: 'Aksiyon roguelike prototipi',
-    case_d2: 'Üçüncü şahıs aksiyon roguelike: yetenek tabanlı combat, prosedürel zorluk döngüleri ve veri odaklı ilerleme sistemi.',
-    case_cat_3: 'İnşa sistemi',
-    case_d3: "Fortnite'ın inşa mekaniklerinden ilham alan parça parça inşa sistemi: yerleştirme, düzenleme ve gerçek zamanlı yıkım.",
-    case_cat_4: 'Temel sistem',
-    case_d4: 'Unreal Engine için modüler envanter altyapısı: yığma, donatma, bırakma ve UI entegrasyonu — başka projelere taşınabilir şekilde.',
-    more_label: "GitHub'da ayrıca:",
-    more_1: 'Üretim Sistemi',
-    more_2: 'Tasarım Desenleri C#',
-    more_all: 'Tüm depolar',
-
-    sec_xp: 'Deneyim',
-    xp1_when: 'Tem 2026 — Devam',
-    xp1_role: 'Unreal Engine Geliştirici',
-    xp1_org: 'Velovis Games Studio',
-    xp1_desc: "Illegal Mechanic Simulator üzerinde çalışıyorum — co-op tamirci simülasyonu, Steam'de yakında.",
-    xp2_when: 'May 2025 — Devam',
-    xp2_role: 'MMORPG Sunucu Geliştirici (Serbest)',
-    xp2_org: 'M2 Private Server',
-    xp2_desc: 'Metin2 private server: Lua ve C ile oyun sistemleri, içerik ve araçlar.',
-    xp3_when: 'Haz 2025 — Eyl 2026',
-    xp3_role: 'Unreal Engine Geliştirici',
-    xp3_org: 'Mania Interactive — bağımsız stüdyo',
-    xp3_desc: 'MvsM ve Terminal Toilet Simulator — ikisi de Steam\u2019de geliştirme aşamasında.',
-    xp4_when: 'Kas 2023 — May 2025',
-    xp4_role: 'Unreal Engine Geliştirici',
-    xp4_org: 'DBK Games',
-    xp4_desc: "SpaceBourne 2 (2025'te çıktı) ve SpaceBourne 3.",
-    xp5_role: 'Unity Geliştirici',
-    xp5_org: 'ELA Game Studio',
-    xp5_desc: 'Stajdan tam zamana geçiş. Mobil oyun geliştirme, gameplay prototipleme ve UI.',
-    xp6_when: '3 aylık proje',
-    xp6_role: 'Geliştirici',
-    xp6_org: 'ARC Savunma Yazılım',
-    xp6_desc: 'Savunma uygulamaları için simülasyon ve görselleştirme araçları; üniversite mentorluğunda gerçek sistemler üzerinde çalışma.',
-    xp_edu_when: 'Eğitim',
-    xp_edu_role: 'Ege Üniversitesi — Bilgisayar Programcılığı',
-    xp_edu_desc: 'Bölüm birincisi olarak mezun oldum.',
-
-    sec_stack: 'Teknolojiler',
-    stack_lang: 'Diller',
-    stack_engine: 'Motor',
-    stack_gameplay: 'Gameplay',
-    stack_net: 'Networking',
-    stack_mmo: 'MMO Sunucu',
-    stack_db: 'Veritabanları',
-    stack_backend: 'Backend',
-    stack_infra: 'Altyapı',
-    stack_tools: 'Araçlar',
-
-    sec_about: 'Hakkımda',
-    about_p1: 'İzmir\u2019de yaşayan bir gameplay programcısıyım. Ağırlıklı olarak Unreal Engine ve C++ ile çalışıyorum — gameplay sistemleri, multiplayer networking ve performans kritik oyun kodu.',
-    about_p2: '2022\u2019den beri oyun sektöründeyim: önce Unity mobil projeleri, ardından ticari Unreal Engine oyunları. Ege Üniversitesi Bilgisayar Programcılığı bölümünden bölüm birincisi olarak mezun oldum.',
-    about_p3: 'Stüdyo işlerinin yanında bir Metin2 private server projesi yürütüyorum (Lua / C) ve GitHub\u2019da açık kaynak Unreal Engine sistemleri geliştiriyorum.',
-
-    sec_contact: 'İletişim',
-    contact_intro: 'Gameplay programcılığı / Unreal Engine fırsatlarına açığım.',
-    contact_email: 'E-posta',
-    copy_btn: 'Kopyala',
-    contact_resume: 'Özgeçmiş',
-    resume_val: 'PDF · İndir'
-  };
-
+  var LANGS = ['en', 'de', 'fr', 'es', 'it', 'pt', 'nl', 'pl', 'sv', 'tr'];
   var HTML_KEYS = { hero_bio: true };
+  var EN_UI = { vid_pause: 'Pause video', vid_play: 'Play video', copy_btn: 'Copy address', f_err: 'Please write a message first.',
+    f_note: 'Your email app opens with the message prepared. Nothing is stored on this site.' };
 
+  var root = document.documentElement;
   var nodes = document.querySelectorAll('[data-i18n]');
   var enCache = [];
   for (var i = 0; i < nodes.length; i++) enCache.push(nodes[i].innerHTML);
 
   var titleEl = document.querySelector('title');
   var descEl = document.querySelector('meta[name="description"]');
-  var enTitle = titleEl ? titleEl.textContent : '';
-  var enDesc = descEl ? descEl.getAttribute('content') : '';
+  var enTitle = titleEl.textContent;
+  var enDesc = descEl.getAttribute('content');
+  var select = document.getElementById('lang-select');
+  var dict = null; // null = English (HTML source)
 
-  function applyLang(lang) {
-    var isTr = lang === 'tr';
-    document.documentElement.lang = lang;
+  function t(key) {
+    var v = dict ? dict[key] : undefined;
+    return v !== undefined ? v : EN_UI[key];
+  }
 
+  function apply(lang, d) {
+    dict = d;
+    root.lang = lang;
     for (var i = 0; i < nodes.length; i++) {
-      var el = nodes[i];
-      if (!isTr) { el.innerHTML = enCache[i]; continue; }
-      var key = el.getAttribute('data-i18n');
-      if (TR[key] === undefined) continue;
-      if (HTML_KEYS[key]) el.innerHTML = TR[key];
-      else el.textContent = TR[key];
+      var key = nodes[i].getAttribute('data-i18n');
+      if (!d) { nodes[i].innerHTML = enCache[i]; continue; }
+      if (d[key] === undefined) continue;
+      if (HTML_KEYS[key]) nodes[i].innerHTML = d[key];
+      else nodes[i].textContent = d[key];
     }
-
-    if (titleEl) titleEl.textContent = isTr ? TR.title : enTitle;
-    if (descEl) descEl.setAttribute('content', isTr ? TR.desc : enDesc);
-
-    var buttons = document.querySelectorAll('[data-lang]');
-    for (var j = 0; j < buttons.length; j++) {
-      buttons[j].classList.toggle('active', buttons[j].getAttribute('data-lang') === lang);
-    }
-
-    try { localStorage.setItem('lang', lang); } catch (e) { /* file:// or private mode */ }
+    titleEl.textContent = d ? d.title : enTitle;
+    descEl.setAttribute('content', d ? d.desc : enDesc);
+    select.value = lang;
+    if (toggleVideoLabel) toggleVideoLabel();
+    root.classList.remove('i18n-wait');
   }
 
-  var langButtons = document.querySelectorAll('[data-lang]');
-  for (var b = 0; b < langButtons.length; b++) {
-    langButtons[b].addEventListener('click', function () {
-      applyLang(this.getAttribute('data-lang'));
+  function setLang(lang) {
+    if (LANGS.indexOf(lang) < 0 || lang === 'en') return apply('en', null);
+    if (window.I18N && window.I18N[lang]) return apply(lang, window.I18N[lang]);
+    var s = document.createElement('script');
+    s.src = 'lang/' + lang + '.js';
+    s.onload = function () { if (select.value === lang) apply(lang, window.I18N[lang]); };
+    s.onerror = function () { apply('en', null); };
+    document.head.appendChild(s);
+  }
+
+  select.addEventListener('change', function () {
+    setLang(select.value);
+    try { localStorage.setItem('lang', select.value); } catch (e) { /* file:// or private mode */ }
+  });
+
+  /* Initial language was resolved in <head> (window.__lang) and its dictionary is already loaded. */
+  var initial = window.__lang || 'en';
+  select.value = initial;
+  if (initial !== 'en') setLang(initial); else root.classList.remove('i18n-wait');
+
+  /* Hero background: shuffled mix of trailers (video) and screenshots (stills, slow zoom), crossfaded.
+     Runs only on wide screens without reduced-motion / data-saver; user-pausable; paused while
+     off-screen. Otherwise the static poster frame is shown. */
+  var video = document.getElementById('hero-video');
+  var vidBtn = document.getElementById('vid-toggle');
+  var stills = document.querySelectorAll('.bg-still');
+  var toggleVideoLabel = null;
+  var conn = navigator.connection;
+  if (video && vidBtn && stills.length === 2 &&
+      !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+      matchMedia('(min-width: 721px)').matches &&
+      !(conn && conn.saveData)) {
+    var STILL_MS = 6000;
+    /* Order: both trailers first, then shuffled screenshots, then the cycle repeats with the trailers. */
+    /* Pick quality by physical pixels: 1080p trailers and 4K (AI upscaled) stills on large or HiDPI screens. */
+    var px = Math.max(screen.width, window.innerWidth) * (window.devicePixelRatio || 1);
+    var vq = px >= 1900 ? 'hd' : 'sd', sq = px >= 2300 ? '4k/' : '';
+    var list = [{ v: 'assets/sb2-trailer-' + vq + '.mp4' }, { v: 'assets/ims-trailer-' + vq + '.mp4' }];
+    var shots = [
+      'spacebourne2-1', 'spacebourne2-2', 'spacebourne2-3', 'ims-1', 'ims-2', 'ims-3', 'ims-4', 'ims-5'
+    ];
+    for (var s = shots.length - 1; s > 0; s--) { // Fisher-Yates shuffle
+      var r = Math.floor(Math.random() * (s + 1)), tmp = shots[s]; shots[s] = shots[r]; shots[r] = tmp;
+    }
+    shots.forEach(function (n) { list.push({ i: 'assets/projects/' + sq + n + '.jpg' }); });
+    var layers = [stills[0], stills[1], video];
+    var pos = -1, timer = 0, userPaused = false, hidden = false, fails = 0, curIsVideo = false;
+
+    var show = function (el) { layers.forEach(function (l) { l.classList.toggle('on', l === el); }); };
+    var next = function () {
+      clearTimeout(timer);
+      var item = list[++pos % list.length];
+      curIsVideo = !!item.v;
+      if (item.v) {
+        video.src = item.v;
+        video.play().catch(function () {});
+      } else {
+        var el = stills[0].classList.contains('on') ? stills[1] : stills[0];
+        el.onload = function () {
+          el.onload = null; fails = 0;
+          el.classList.remove('kb'); void el.offsetWidth; el.classList.add('kb');
+          show(el);
+          clearTimeout(timer);
+          if (!userPaused && !hidden) timer = setTimeout(next, STILL_MS);
+        };
+        el.onerror = function () { if (++fails < list.length) next(); };
+        el.src = item.i;
+      }
+    };
+    video.addEventListener('playing', function () { fails = 0; show(video); toggleVideoLabel(); });
+    video.addEventListener('ended', next);
+    video.addEventListener('error', function () { if (video.getAttribute('src') && ++fails < list.length) next(); });
+
+    var pauseAll = function () { clearTimeout(timer); if (curIsVideo) video.pause(); };
+    var resumeAll = function () {
+      if (curIsVideo) video.play().catch(function () {});
+      else { clearTimeout(timer); timer = setTimeout(next, STILL_MS); }
+    };
+    toggleVideoLabel = function () { vidBtn.textContent = userPaused ? t('vid_play') : t('vid_pause'); };
+
+    vidBtn.hidden = false;
+    toggleVideoLabel();
+    vidBtn.addEventListener('click', function () {
+      userPaused = !userPaused;
+      if (userPaused) pauseAll(); else if (!hidden) resumeAll();
+      toggleVideoLabel();
     });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        hidden = !es[0].isIntersecting;
+        if (hidden) pauseAll(); else if (!userPaused) resumeAll();
+      }).observe(document.querySelector('.hero-bg'));
+    }
+    next();
   }
 
-  var saved = 'en';
-  try { saved = localStorage.getItem('lang') || 'en'; } catch (e) { /* ignore */ }
-  if (saved === 'tr') applyLang('tr');
+  /* Scroll progress bar */
+  var bar = document.createElement('div');
+  bar.className = 'progress';
+  document.body.appendChild(bar);
+  window.addEventListener('scroll', function () {
+    bar.style.transform = 'scaleX(' + (root.scrollTop / ((root.scrollHeight - root.clientHeight) || 1)) + ')';
+  }, { passive: true });
 
-  /* Email copy */
+  /* Motion & pointer effects: hero parallax, custom cursor, cursor spotlight, magnetic buttons, card tilt.
+     All off for reduced-motion; cursor/tilt only for fine pointers (mouse). */
+  var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!calm) {
+    var heroBg = document.querySelector('.hero-bg');
+    window.addEventListener('scroll', function () {
+      if (root.scrollTop < 1400) heroBg.style.transform = 'translate3d(0,' + (root.scrollTop * 0.3).toFixed(1) + 'px,0)';
+    }, { passive: true });
+
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      root.classList.add('has-cursor');
+      var mk = function (c) { var d = document.createElement('div'); d.className = c; document.body.appendChild(d); return d; };
+      var dot = mk('cursor-dot out'), ring = mk('cursor-ring out');
+      var spot = mk('spot');
+      var mx = 0, my = 0, rx = 0, ry = 0, seen = false, raf = 0;
+      var loop = function () { // runs only while the ring is still catching up to the pointer
+        rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18;
+        ring.style.transform = 'translate3d(' + rx.toFixed(1) + 'px,' + ry.toFixed(1) + 'px,0)';
+        spot.style.setProperty('--mx', rx.toFixed(0) + 'px'); // on the spot element only: no document-wide restyle
+        spot.style.setProperty('--my', ry.toFixed(0) + 'px');
+        raf = Math.abs(mx - rx) + Math.abs(my - ry) > 0.1 ? requestAnimationFrame(loop) : 0;
+      };
+      document.addEventListener('mousemove', function (e) {
+        mx = e.clientX; my = e.clientY;
+        if (!seen) { seen = true; rx = mx; ry = my; dot.classList.remove('out'); ring.classList.remove('out'); }
+        dot.style.transform = 'translate3d(' + mx + 'px,' + my + 'px,0)';
+        if (!raf) raf = requestAnimationFrame(loop);
+      });
+      document.addEventListener('mouseover', function (e) {
+        ring.classList.toggle('big', !!e.target.closest('a, button, select, label, .snapshot'));
+      });
+      document.addEventListener('mousedown', function () { ring.classList.add('down'); });
+      document.addEventListener('mouseup', function () { ring.classList.remove('down'); });
+      document.documentElement.addEventListener('mouseleave', function () { dot.classList.add('out'); ring.classList.add('out'); });
+      document.documentElement.addEventListener('mouseenter', function () { dot.classList.remove('out'); ring.classList.remove('out'); });
+
+      document.querySelectorAll('.btn').forEach(function (b) { // magnetic buttons
+        b.addEventListener('mousemove', function (e) {
+          var r = b.getBoundingClientRect();
+          b.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * 0.22).toFixed(1) + 'px,' +
+            ((e.clientY - r.top - r.height / 2) * 0.3).toFixed(1) + 'px)';
+        });
+        b.addEventListener('mouseleave', function () { b.style.transform = ''; });
+      });
+
+      var snap = document.querySelector('.snapshot'); // subtle 3D tilt
+      if (snap) {
+        snap.addEventListener('mousemove', function (e) {
+          var r = snap.getBoundingClientRect();
+          var px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+          snap.style.transform = 'perspective(900px) rotateX(' + (-py * 5).toFixed(2) + 'deg) rotateY(' + (px * 6).toFixed(2) + 'deg)';
+        });
+        snap.addEventListener('mouseleave', function () { snap.style.transform = ''; });
+      }
+    }
+  }
+
+  if ('IntersectionObserver' in window) {
+    /* Reveal-on-scroll (hidden state is CSS: .js .section .container > *) */
+    var revealIO = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); revealIO.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.section .container > *').forEach(function (el) { revealIO.observe(el); });
+
+    /* Active nav link (desktop nav and mobile tab bar) */
+    var links = {};
+    document.querySelectorAll('.site-nav a, .tabbar a').forEach(function (a) {
+      var id = a.getAttribute('href').slice(1);
+      (links[id] = links[id] || []).push(a);
+    });
+    var navIO = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        Object.keys(links).forEach(function (k) {
+          links[k].forEach(function (a) { a.classList.toggle('active', k === e.target.id); });
+        });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    document.querySelectorAll('section[id]').forEach(function (s) { navIO.observe(s); });
+  } else {
+    root.classList.remove('js'); // no IO: never leave content hidden
+  }
+
+  /* Mobile tab bar: light haptic tick where supported */
+  document.querySelectorAll('.tabbar a').forEach(function (a) {
+    a.addEventListener('click', function () { if (navigator.vibrate) navigator.vibrate(8); });
+  });
+
+  /* Contact: copy address, and a composer that opens the visitor's own mail app or Gmail with the
+     message prepared. Nothing is sent to or stored on this site. */
   var copyBtn = document.getElementById('copy-email');
-  if (copyBtn && navigator.clipboard) {
+  if (copyBtn) {
     copyBtn.addEventListener('click', function () {
       var btn = this;
-      navigator.clipboard.writeText(EMAIL).then(function () {
-        var isTr = document.documentElement.lang === 'tr';
-        btn.textContent = isTr ? 'Kopyalandı' : 'Copied';
+      var done = function () {
+        btn.textContent = '✓';
         btn.classList.add('done');
-        setTimeout(function () {
-          btn.textContent = isTr ? 'Kopyala' : 'Copy';
-          btn.classList.remove('done');
-        }, 1600);
-      });
+        setTimeout(function () { btn.textContent = t('copy_btn'); btn.classList.remove('done'); }, 1600);
+      };
+      if (navigator.clipboard) navigator.clipboard.writeText(EMAIL).then(done);
+      else window.prompt('', EMAIL);
     });
+  }
+
+  var form = document.getElementById('composer');
+  if (form) {
+    var fName = document.getElementById('f-name'), fSub = document.getElementById('f-subject'), fMsg = document.getElementById('f-msg');
+    var note = document.getElementById('f-note');
+    var build = function () {
+      var msg = fMsg.value.trim();
+      if (!msg) { note.textContent = t('f_err'); note.classList.add('err'); fMsg.focus(); return null; }
+      note.classList.remove('err');
+      var name = fName.value.trim();
+      return {
+        subject: fSub.value.trim() || 'Hello Halil',
+        body: msg + (name ? '\n\n' + name : '')
+      };
+    };
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var m = build();
+      if (m) location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(m.subject) + '&body=' + encodeURIComponent(m.body);
+    });
+    document.getElementById('f-gmail').addEventListener('click', function () {
+      var m = build();
+      if (m) window.open('https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(EMAIL) +
+        '&su=' + encodeURIComponent(m.subject) + '&body=' + encodeURIComponent(m.body), '_blank', 'noopener');
+    });
+    fMsg.addEventListener('input', function () { note.classList.remove('err'); note.textContent = t('f_note'); });
   }
 })();
