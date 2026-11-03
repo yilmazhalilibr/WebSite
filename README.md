@@ -1,6 +1,6 @@
-# Halil İbrahim Yılmaz | Portfolio
+# Halil İbrahim YILMAZ | Portfolio
 
-Portfolio of **Halil İbrahim Yılmaz**, gameplay and systems programmer (Unreal Engine 4 and 5, C++, multiplayer, local AI), based in İzmir, Türkiye. Worked on *SpaceBourne 2* and *Illegal Mechanic Simulator* at game studios, runs a released, actively played full stack *MMORPG M2 Server* and operates local AI systems end to end. Works on-site in İzmir or remotely with teams worldwide. Languages: Turkish (native), English (B1+), German (A1).
+Portfolio of **Halil İbrahim YILMAZ**, gameplay and systems programmer (Unreal Engine 4 and 5, C++, multiplayer, local AI), based in İzmir, Türkiye. Worked on *SpaceBourne 2* and *Illegal Mechanic Simulator* at game studios, runs a released, actively played full stack *MMORPG M2 Server* and operates local AI systems end to end. Works on-site in İzmir or remotely with teams worldwide. Languages: Turkish (native), English (B1+), German (A1).
 
 **Live site:** https://yilmazhalilibr.github.io/WebSite/
 
@@ -25,8 +25,8 @@ A static site in plain HTML, CSS and one vanilla JavaScript file. No build step,
 - **Shows the work first.** Order: summary, reasons to work together, studio work, the flagship MMORPG M2 Server (released, active players, test links on request), the local AI workstation, personal projects, experience from 2020, full technology stack, about, contact.
 - **Feels like an app on phones.** Below 720 px a floating bottom tab bar (Home, Work, MMORPG, Experience, Contact) follows the scroll position, respects safe areas and gives a light haptic tick where supported.
 - **Makes contact easy.** Email, LinkedIn, GitHub and CV cards, plus a message composer that opens the visitor's own email app or Gmail with the message prepared. Nothing is sent to or stored on the site.
-- **Looks sharp on large screens.** The hero background plays the SpaceBourne 2 trailer, then the Illegal Mechanic Simulator teaser, then shuffled screenshots, then the trailers again. Trailers are served in 1080p (the highest Steam provides) with a lighter 960 px version for small screens. Stills have a 4K tier (AI upscaled with Real-ESRGAN from the 1080p originals) used when the screen has 2300 or more physical pixels. Custom cursor with spotlight, hero parallax, staggered intro, magnetic buttons, card tilt and reveal on scroll. Everything is disabled for *reduced motion*, and the cursor and tilt only run with a mouse.
-- **Own icon.** An "H." monogram (SVG plus PNG, ICO, Apple touch icon and web app manifest with a maskable icon), also used as the header mark.
+- **Looks sharp on large screens.** The hero background plays the SpaceBourne 2 trailer, then the Illegal Mechanic Simulator teaser, then shuffled screenshots, then the trailers again. Trailers are served in 1080p (the highest Steam provides) with a lighter 960 px version for small screens. Stills have a 4K tier (AI upscaled with Real-ESRGAN from the 1080p originals) used when the screen has 2300 or more physical pixels. Hero parallax, staggered intro and reveal on scroll, all disabled for *reduced motion*. The native mouse cursor is used.
+- **Own icon.** An "HY" monogram (SVG plus PNG, ICO, Apple touch icon and web app manifest with a maskable icon), also used as the header mark.
 - **SEO.** Per language title and description, Open Graph and Twitter tags, canonical URL and `schema.org/Person` JSON-LD.
 
 ## Screenshots
@@ -150,8 +150,8 @@ AI systems installed, tuned, served and used locally. Models run include Qwen 35
 
 ```
 index.html            Markup, English copy (data-i18n keys), pre-paint language detection, SEO, JSON-LD
-styles.css            Design tokens, layout, mobile tab bar, motion and cursor effects
-script.js             Language switch, hero media playlist, scroll and pointer effects, tab bar, contact composer
+styles.css            Design tokens, layout, mobile tab bar, motion effects
+script.js             Language switch, hero media playlist, scroll effects, tab bar, contact composer
 lang/xx.js            One dictionary per language: (window.I18N = ...).xx = { key: 'text' }
 cv/cv.html            Source of the ATS friendly CV
 Halil_Ibrahim_YILMAZ_CV.pdf
@@ -190,9 +190,9 @@ Open `?lang=de` (or any code from the table above) to force a language.
 - Semantic landmarks, one `h1`, visible focus rings, labelled language selector, `lang` attribute updated on switch, 44 px touch targets in the tab bar.
 - Reveal on scroll is only applied when `IntersectionObserver` exists. Without JavaScript all content is visible.
 - No analytics and no cookies. `localStorage` stores only a language the visitor chose explicitly.
-- Fonts (Inter, JetBrains Mono) load from Google Fonts.
+- Fonts (Geist, Geist Mono) load from Google Fonts.
 
 ## Credits and rights
 
-- Source code and copy of this site: © Halil İbrahim Yılmaz. Ask before reusing personal content (text, CV).
+- Source code and copy of this site: © Halil İbrahim YILMAZ. Ask before reusing personal content (text, CV).
 - SpaceBourne 2 and Illegal Mechanic Simulator trailers and screenshots belong to their owners (DBK Games, Velovis Games Studio, Steam). MvsM and Terminal Toilet Simulator artwork belongs to Mania Interactive. They are shown here only to document my own work on those titles.

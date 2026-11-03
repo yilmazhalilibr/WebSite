@@ -155,53 +155,6 @@
     window.addEventListener('scroll', function () {
       if (root.scrollTop < 1400) heroBg.style.transform = 'translate3d(0,' + (root.scrollTop * 0.3).toFixed(1) + 'px,0)';
     }, { passive: true });
-
-    if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      root.classList.add('has-cursor');
-      var mk = function (c) { var d = document.createElement('div'); d.className = c; document.body.appendChild(d); return d; };
-      var dot = mk('cursor-dot out'), ring = mk('cursor-ring out');
-      var spot = mk('spot');
-      var mx = 0, my = 0, rx = 0, ry = 0, seen = false, raf = 0;
-      var loop = function () { // runs only while the ring is still catching up to the pointer
-        rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18;
-        ring.style.transform = 'translate3d(' + rx.toFixed(1) + 'px,' + ry.toFixed(1) + 'px,0)';
-        spot.style.setProperty('--mx', rx.toFixed(0) + 'px'); // on the spot element only: no document-wide restyle
-        spot.style.setProperty('--my', ry.toFixed(0) + 'px');
-        raf = Math.abs(mx - rx) + Math.abs(my - ry) > 0.1 ? requestAnimationFrame(loop) : 0;
-      };
-      document.addEventListener('mousemove', function (e) {
-        mx = e.clientX; my = e.clientY;
-        if (!seen) { seen = true; rx = mx; ry = my; dot.classList.remove('out'); ring.classList.remove('out'); }
-        dot.style.transform = 'translate3d(' + mx + 'px,' + my + 'px,0)';
-        if (!raf) raf = requestAnimationFrame(loop);
-      });
-      document.addEventListener('mouseover', function (e) {
-        ring.classList.toggle('big', !!e.target.closest('a, button, select, label, .snapshot'));
-      });
-      document.addEventListener('mousedown', function () { ring.classList.add('down'); });
-      document.addEventListener('mouseup', function () { ring.classList.remove('down'); });
-      document.documentElement.addEventListener('mouseleave', function () { dot.classList.add('out'); ring.classList.add('out'); });
-      document.documentElement.addEventListener('mouseenter', function () { dot.classList.remove('out'); ring.classList.remove('out'); });
-
-      document.querySelectorAll('.btn').forEach(function (b) { // magnetic buttons
-        b.addEventListener('mousemove', function (e) {
-          var r = b.getBoundingClientRect();
-          b.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * 0.22).toFixed(1) + 'px,' +
-            ((e.clientY - r.top - r.height / 2) * 0.3).toFixed(1) + 'px)';
-        });
-        b.addEventListener('mouseleave', function () { b.style.transform = ''; });
-      });
-
-      var snap = document.querySelector('.snapshot'); // subtle 3D tilt
-      if (snap) {
-        snap.addEventListener('mousemove', function (e) {
-          var r = snap.getBoundingClientRect();
-          var px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
-          snap.style.transform = 'perspective(900px) rotateX(' + (-py * 5).toFixed(2) + 'deg) rotateY(' + (px * 6).toFixed(2) + 'deg)';
-        });
-        snap.addEventListener('mouseleave', function () { snap.style.transform = ''; });
-      }
-    }
   }
 
   if ('IntersectionObserver' in window) {

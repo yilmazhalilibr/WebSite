@@ -1,5 +1,5 @@
 (window.I18N = window.I18N || {}).tr = {
-  title: "Halil İbrahim Yılmaz | Gameplay Programcısı",
+  title: "Halil İbrahim YILMAZ | Gameplay Programcısı",
   desc: "Unreal Engine 4 ve 5 ile C++ kullanan bir gameplay programcısı. Steam'de yayınlanan SpaceBourne 2 üzerinde çalıştı, tam kapsamlı bir MMORPG sunucusu geliştiriyor.",
   vid_play: "Videoyu oynat",
   vid_pause: "Duraklat",

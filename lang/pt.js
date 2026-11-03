@@ -1,5 +1,5 @@
 (window.I18N = window.I18N || {}).pt = {
-  title: 'Halil İbrahim Yılmaz | Programador de Gameplay',
+  title: 'Halil İbrahim YILMAZ | Programador de Gameplay',
   desc: "Programador de gameplay com Unreal Engine 4 e 5 e C++. Trabalhou em SpaceBourne 2, disponível na Steam, e desenvolve o MMORPG M2 Server, um MMORPG full stack.",
   vid_play: 'Reproduzir vídeo',
   vid_pause: 'Pausar vídeo',
