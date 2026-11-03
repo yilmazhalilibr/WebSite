@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0D0D0D">
+<script>
+/* Theme before first paint: saved choice, else the visitor's system setting, else dark. */
+(function () {
+  var t; try { t = localStorage.getItem('theme'); } catch (e) {}
+  if (t !== 'light' && t !== 'dark') t = (window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+  var m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = t === 'light' ? '#FAFAF8' : '#0D0D0D';
+})();
+</script>
 <title>Halil İbrahim YILMAZ | Gameplay Programmer</title>
 <meta name="description" content="Gameplay programmer working with Unreal Engine 4 and 5 and C++. Worked on SpaceBourne 2 on Steam and develops a full-stack MMORPG server.">
 <meta property="og:title" content="Halil İbrahim YILMAZ | Gameplay Programmer">
@@ -88,6 +97,10 @@
       <a href="#experience" data-i18n="nav_experience">Experience</a>
       <a href="#contact" class="nav-cta" data-i18n="nav_contact">Contact</a>
     </nav>
+    <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch theme" title="Dark / light">
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
     <label class="lang-select">
       <span class="visually-hidden">Language</span>
       <select id="lang-select" aria-label="Language">

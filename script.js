@@ -230,6 +230,23 @@
     });
     fMsg.addEventListener('input', function () { note.classList.remove('err'); note.textContent = t('f_note'); });
   }
+  /* Theme toggle: saves the visitor's choice; without a saved choice it follows the system setting live. */
+  var themeBtn = document.getElementById('theme-toggle');
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+  var setTheme = function (t, save) {
+    root.setAttribute('data-theme', t);
+    if (themeMeta) themeMeta.content = t === 'light' ? '#FAFAF8' : '#0D0D0D';
+    if (save) { try { localStorage.setItem('theme', t); } catch (e) { /* private mode */ } }
+  };
+  if (themeBtn) themeBtn.addEventListener('click', function () {
+    setTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light', true);
+  });
+  if (window.matchMedia) {
+    var mq = matchMedia('(prefers-color-scheme: light)');
+    var follow = function (e) { var s = null; try { s = localStorage.getItem('theme'); } catch (x) {} if (!s) setTheme(e.matches ? 'light' : 'dark', false); };
+    if (mq.addEventListener) mq.addEventListener('change', follow);
+  }
+
   /* Crosshair click animation. The cursor itself is native CSS (zero latency); on each mouse press a
      short-lived element spreads four ticks, a ring and a hit marker at the pointer, then removes itself. */
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches && matchMedia('(hover: hover) and (pointer: fine)').matches) {
