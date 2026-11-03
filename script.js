@@ -235,9 +235,11 @@
   var themeMeta = document.querySelector('meta[name="theme-color"]');
   var setTheme = function (t, save) {
     root.setAttribute('data-theme', t);
+    if (themeBtn) themeBtn.setAttribute('aria-pressed', t === 'light' ? 'true' : 'false');
     if (themeMeta) themeMeta.content = t === 'light' ? '#FAFAF8' : '#0D0D0D';
     if (save) { try { localStorage.setItem('theme', t); } catch (e) { /* private mode */ } }
   };
+  if (themeBtn) themeBtn.setAttribute('aria-pressed', root.getAttribute('data-theme') === 'light' ? 'true' : 'false');
   if (themeBtn) themeBtn.addEventListener('click', function () {
     setTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light', true);
   });
