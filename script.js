@@ -230,4 +230,17 @@
     });
     fMsg.addEventListener('input', function () { note.classList.remove('err'); note.textContent = t('f_note'); });
   }
+  /* Crosshair click animation. The cursor itself is native CSS (zero latency); on each mouse press a
+     short-lived element spreads four ticks, a ring and a hit marker at the pointer, then removes itself. */
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      var s = document.createElement('div');
+      s.className = 'shot';
+      s.style.transform = 'translate3d(' + e.clientX + 'px,' + e.clientY + 'px,0)';
+      s.innerHTML = '<i class="t"></i><i class="r"></i><i class="b"></i><i class="l"></i><u class="ring"></u><u class="hm"></u>';
+      document.body.appendChild(s);
+      setTimeout(function () { s.remove(); }, 480);
+    }, { passive: true });
+  }
 })();
